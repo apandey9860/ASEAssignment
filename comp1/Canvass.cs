@@ -26,7 +26,7 @@ namespace comp1
         {
             this.g = g;
             xPos = yPos = 0;
-            pen = new Pen(Color.White, 1);//default pen with constants
+            pen = new Pen(Color.Black, 1);//default pen with constants
         }
         /// <summary>
         /// Draw a line from current Pen position(xPos, yPos)
