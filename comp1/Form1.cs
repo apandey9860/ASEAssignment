@@ -12,16 +12,29 @@ namespace comp1
 {
     public partial class Form1 : Form
     {
-        Bitmap bitmap = new Bitmap(640, 480);
+        Bitmap OutputBitmap = new Bitmap(640, 480);
+        Canvass MyCanvass;
 
         public Form1()
         {
             InitializeComponent();
+            MyCanvass = new Canvass(Graphics.FromImage(OutputBitmap));
         }
 
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
 
+        private void cmdLine_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                Refresh();
+            }
+        }
+
+        private void OutputWindow_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.DrawImageUnscaled(OutputBitmap, 0, 0);
         }
     }
 }

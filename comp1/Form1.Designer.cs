@@ -29,47 +29,48 @@ namespace comp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.OutputWindow = new System.Windows.Forms.PictureBox();
+            this.cmdLine = new System.Windows.Forms.TextBox();
+            this.ProgramWindow = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.OutputWindow)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // OutputWindow
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(524, 25);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(697, 370);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.OutputWindow.Location = new System.Drawing.Point(524, 25);
+            this.OutputWindow.Name = "OutputWindow";
+            this.OutputWindow.Size = new System.Drawing.Size(570, 370);
+            this.OutputWindow.TabIndex = 0;
+            this.OutputWindow.TabStop = false;
+            this.OutputWindow.Paint += new System.Windows.Forms.PaintEventHandler(this.OutputWindow_Paint);
             // 
-            // textBox1
+            // cmdLine
             // 
-            this.textBox1.Location = new System.Drawing.Point(35, 446);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(465, 22);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            this.cmdLine.Location = new System.Drawing.Point(35, 446);
+            this.cmdLine.Name = "cmdLine";
+            this.cmdLine.Size = new System.Drawing.Size(465, 22);
+            this.cmdLine.TabIndex = 1;
+            this.cmdLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmdLine_KeyDown);
             // 
-            // richTextBox1
+            // ProgramWindow
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(35, 25);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(465, 370);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.ProgramWindow.Location = new System.Drawing.Point(35, 25);
+            this.ProgramWindow.Name = "ProgramWindow";
+            this.ProgramWindow.Size = new System.Drawing.Size(465, 370);
+            this.ProgramWindow.TabIndex = 2;
+            this.ProgramWindow.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1255, 480);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1135, 480);
+            this.Controls.Add(this.ProgramWindow);
+            this.Controls.Add(this.cmdLine);
+            this.Controls.Add(this.OutputWindow);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutputWindow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,9 +78,9 @@ namespace comp1
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.PictureBox OutputWindow;
+        private System.Windows.Forms.TextBox cmdLine;
+        private System.Windows.Forms.RichTextBox ProgramWindow;
     }
 }
 
