@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Drawing;
+
+namespace comp1
+{
+    class DrawCircle : Shape
+    {
+        public int radius;
+        public DrawCircle(int r) : base(r, 0)
+        {
+            radius = r;
+        }
+
+        public override void draw(Canvass canvass)
+        {
+            canvass.g.DrawEllipse(canvass.pen, canvass.xPos, canvass.yPos, (radius * 2), (radius * 2));
+        }
+    }
+}

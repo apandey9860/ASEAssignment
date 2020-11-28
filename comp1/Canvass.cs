@@ -10,12 +10,12 @@ namespace comp1
     /// <summary>
     /// Canvass class holds information that is displayed on the form in response to the Simple Pragramming Language (SPL) commands
     /// </summary>
-    class Canvass
+    public class Canvass
     {
         //Instance data for x,y pos, pen and graphic context
-        Graphics g;
-        Pen pen;
-        int xPos, yPos;
+        public Graphics g;
+        public Pen pen;
+        public int xPos, yPos;
 
 
         /// <summary>
@@ -27,7 +27,9 @@ namespace comp1
             this.g = g;
             xPos = yPos = 0;
             pen = new Pen(Color.Black, 1);//default pen with constants
+            g.DrawRectangle(pen, xPos, yPos, 1, 1);
         }
+
         /// <summary>
         /// Draw a line from current Pen position(xPos, yPos)
         /// </summary>
@@ -40,13 +42,28 @@ namespace comp1
             yPos = toY; //pen position is moved to the end of the line
         }
 
+
         /// <summary>
         /// Draw a square from current Pen position(xPos, yPos)
         /// </summary>
         /// <param name="width">Width/Height of the square</param>
-        public void DrawSquare(int width)
+        
+        public void MoveTo(int toX,int toY)
         {
-            g.DrawRectangle(pen, xPos, yPos, xPos+width, yPos+width);
+            xPos = toX;
+            yPos = toY;
+            g.DrawRectangle(pen, xPos, yPos, 1, 1);
+        }
+        public void reset()
+        {
+            xPos = yPos = 0;
+            pen = new Pen(Color.Black, 1);//default pen with constants
+            g.Clear(SystemColors.Control);
+            g.DrawRectangle(pen, xPos, yPos, 1, 1);
+        }
+        public void clear()
+        {
+            g.Clear(SystemColors.Control);
         }
     }
 }
