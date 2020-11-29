@@ -15,8 +15,11 @@ namespace comp1
 
             if (mulCommand.Length.Equals(0))
             {
-                
                 singleCommand(command, MyCanvass);
+            }
+            else if (command.Equals("run"))
+            {
+                multiCommand(mulCommand, MyCanvass);
             }
             else
             {

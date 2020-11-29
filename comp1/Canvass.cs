@@ -27,7 +27,6 @@ namespace comp1
             this.g = g;
             xPos = yPos = 0;
             pen = new Pen(Color.Black, 1);//default pen with constants
-            g.DrawRectangle(pen, xPos, yPos, 1, 1);
         }
 
         /// <summary>
