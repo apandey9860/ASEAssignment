@@ -81,7 +81,7 @@ namespace comp1
         {
             String command = cmdLine.Text.Trim().ToLower();
             String mulCommand = ProgramWindow.Text.Trim().ToLower();
-            SyntaxCheck syn = new SyntaxCheck(command, mulCommand);
+            //SyntaxCheck syn = new SyntaxCheck(command, mulCommand);
         }
 
         private void SyntaxChecking_TextChanged(object sender, EventArgs e)

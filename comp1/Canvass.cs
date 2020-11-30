@@ -19,6 +19,7 @@ namespace comp1
         public SolidBrush brush;
         public int xPos, yPos;
         public bool fill = false;
+        public bool err = false;
 
         /// <summary>
         /// Constructor initialized canvas to white pen at 0,0

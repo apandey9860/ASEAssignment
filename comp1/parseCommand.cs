@@ -11,10 +11,14 @@ namespace comp1
     class parseCommand
     {
         int x=0;
-
         public void Command(String command, String mulCommand, Canvass MyCanvass)
         {
-
+            if (MyCanvass.err)
+            {
+                MyCanvass.reset();
+                MyCanvass.err = false;
+            }
+            
             if (mulCommand.Length.Equals(0))
             {
                 singleCommand(command, MyCanvass);
@@ -53,22 +57,29 @@ namespace comp1
                 String[] data = cmd[1].Split(',');
                 int x = int.Parse(data[0]);
                 int y = int.Parse(data[1]);
-                MyCanvass.DrawLine(x, y);
+                if (!MyCanvass.err)
+                {
+                    MyCanvass.DrawLine(x, y);
+                }
             }
             else if (cmd[0].Equals("moveto"))
             {
                 String[] data = cmd[1].Split(',');
                 int x = int.Parse(data[0]);
                 int y = int.Parse(data[1]);
-                MyCanvass.MoveTo(x, y);
+                if (!MyCanvass.err)
+                    MyCanvass.MoveTo(x, y);
             }
             else if (cmd[0].Equals("rectangle"))
             {
                 String[] data = cmd[1].Split(',');
                 int x = int.Parse(data[0]);
                 int y = int.Parse(data[1]);
-                Shape rect = new DrawSquare(x, y);
-                rect.draw(MyCanvass);
+                if (!MyCanvass.err)
+                {
+                    Shape rect = new DrawSquare(x, y);
+                    rect.draw(MyCanvass);
+                }
             }
             else if (cmd[0].Equals("triangle"))
             {
@@ -76,52 +87,70 @@ namespace comp1
                 int x = int.Parse(data[0]);
                 int y = int.Parse(data[1]);
                 int z = int.Parse(data[2]);
-                Shape tri = new DrawTriangle(x, y, z);
-                tri.draw(MyCanvass);
+                if (!MyCanvass.err)
+                {
+                    Shape tri = new DrawTriangle(x, y, z);
+                    tri.draw(MyCanvass);
+                }
             }
             else if (cmd[0].Equals("square"))
             {
                 int x = int.Parse(cmd[1]);
-                Shape sqr = new DrawSquare(x,x);
-                sqr.draw(MyCanvass);
+                if (!MyCanvass.err) { 
+                    Shape sqr = new DrawSquare(x, x);
+                    sqr.draw(MyCanvass);
+                }
             }
             else if (cmd[0].Equals("circle"))
             {
                 int x = int.Parse(cmd[1]);
-                Shape sqr = new DrawCircle(x);
-                sqr.draw(MyCanvass);
+                if (!MyCanvass.err)
+                {
+                    Shape sqr = new DrawCircle(x);
+                    sqr.draw(MyCanvass);
+                }
             }
             else if (cmd[0].Equals("pen"))
             {
                 Color color = Color.FromName(cmd[1]);
-                MyCanvass.set_Pen_Color(color);
+                if (!MyCanvass.err)
+                    MyCanvass.set_Pen_Color(color);
             }
             else if (cmd[0].Equals("fill"))
             {
-                if (cmd[1].Equals("on"))
+                if (!MyCanvass.err)
                 {
-                    MyCanvass.fill = true;
-                }
-                else if (cmd[1].Equals("off"))
-                {
-                    MyCanvass.fill = false;
+                    if (cmd[1].Equals("on"))
+                    {
+                        MyCanvass.fill = true;
+                    }
+                    else if (cmd[1].Equals("off"))
+                    {
+                        MyCanvass.fill = false;
+                    }
                 }
             }
             else if (cmd[0].Equals("clear"))
             {
-                MyCanvass.clear();
+                if (!MyCanvass.err)
+                    MyCanvass.clear();
             }
             else if (cmd[0].Equals("reset"))
             {
-                MyCanvass.reset();
+                if (!MyCanvass.err)
+                    MyCanvass.reset();
             }
             else if (cmd[0].Equals("exit"))
             {
-                Application.Exit();
+                if (!MyCanvass.err)
+                    Application.Exit();
             }
             else
             {
-                Font drawFont = new Font("Arial", 10);
+                SyntaxChecking syntax = new SyntaxChecking();
+                syntax.CommandChecking(MyCanvass, n, x);
+                x = x + 20;
+                /*Font drawFont = new Font("Arial", 10);
                 SolidBrush drawBrush = new SolidBrush(Color.Black);
                 n++;
                 if (n != 0)
@@ -137,8 +166,7 @@ namespace comp1
                 {
                     MyCanvass.g.DrawString("Command does not exist", drawFont, drawBrush, 0, 0);
                 }
-                n--;
-                
+                n--;*/
             }
         }
     }
