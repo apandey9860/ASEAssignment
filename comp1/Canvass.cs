@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace comp1
 {
@@ -15,8 +16,9 @@ namespace comp1
         //Instance data for x,y pos, pen and graphic context
         public Graphics g;
         public Pen pen;
+        public SolidBrush brush;
         public int xPos, yPos;
-
+        public bool fill = false;
 
         /// <summary>
         /// Constructor initialized canvas to white pen at 0,0
@@ -27,6 +29,7 @@ namespace comp1
             this.g = g;
             xPos = yPos = 0;
             pen = new Pen(Color.Black, 1);//default pen with constants
+            brush = new SolidBrush(Color.Black);
         }
 
         /// <summary>
@@ -41,6 +44,12 @@ namespace comp1
             yPos = toY; //pen position is moved to the end of the line
         }
 
+        public void set_Pen_Color(Color c)
+        {
+            //Color colour = c.Color;
+            pen = new Pen(c, 1);
+            brush = new SolidBrush(c);
+        }
 
         /// <summary>
         /// Draw a square from current Pen position(xPos, yPos)
@@ -53,6 +62,7 @@ namespace comp1
             yPos = toY;
             g.DrawRectangle(pen, xPos, yPos, 1, 1);
         }
+
         public void reset()
         {
             xPos = yPos = 0;

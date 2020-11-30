@@ -40,8 +40,7 @@ namespace comp1
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
-            this.SyntaxChecking = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.OutputWindow)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +108,7 @@ namespace comp1
             this.loadToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
@@ -139,26 +138,15 @@ namespace comp1
             this.saveFileDialog1.DefaultExt = "jpg";
             this.saveFileDialog1.Filter = "Images (*.jpg)|*.jpg| Text files (*.txt)|*.txt|All files (*.*)|*.*";
             // 
-            // saveFileDialog2
+            // openFileDialog1
             // 
-            this.saveFileDialog2.CheckFileExists = true;
-            this.saveFileDialog2.OverwritePrompt = false;
-            // 
-            // SyntaxChecking
-            // 
-            this.SyntaxChecking.Location = new System.Drawing.Point(531, 387);
-            this.SyntaxChecking.Multiline = true;
-            this.SyntaxChecking.Name = "SyntaxChecking";
-            this.SyntaxChecking.Size = new System.Drawing.Size(570, 51);
-            this.SyntaxChecking.TabIndex = 6;
-            this.SyntaxChecking.TextChanged += new System.EventHandler(this.SyntaxChecking_TextChanged);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1135, 449);
-            this.Controls.Add(this.SyntaxChecking);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ProgramWindow);
@@ -189,8 +177,7 @@ namespace comp1
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
-        private System.Windows.Forms.TextBox SyntaxChecking;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

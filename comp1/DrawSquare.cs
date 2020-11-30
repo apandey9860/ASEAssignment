@@ -13,13 +13,17 @@ namespace comp1
         public int width;
         public DrawSquare(int x, int y) : base( x,  y)
         {
-            height = x;
-            width = y;
+            height = y;
+            width = x;
         }
 
         public override void draw(Canvass canvass)
         {
             canvass.g.DrawRectangle(canvass.pen, canvass.xPos, canvass.yPos, width, height);
+            if (canvass.fill)
+            {
+                canvass.g.FillRectangle(canvass.brush, canvass.xPos, canvass.yPos, width, height);
+            }
         }
     }
 }

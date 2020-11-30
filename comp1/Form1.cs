@@ -59,8 +59,8 @@ namespace comp1
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog2.ShowDialog();
-            OutputWindow.Load(saveFileDialog2.FileName);
+            openFileDialog1.ShowDialog();
+            OutputWindow.Load(openFileDialog1.FileName);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
