@@ -18,6 +18,10 @@ namespace comp1
         public override void draw(Canvass canvass)
         {
             canvass.g.DrawEllipse(canvass.pen, canvass.xPos, canvass.yPos, (radius * 2), (radius * 2));
+            if (canvass.fill)
+            {
+                canvass.g.FillEllipse(canvass.brush, canvass.xPos, canvass.yPos, (radius * 2), (radius * 2));
+            }
         }
     }
 }

@@ -31,7 +31,10 @@ namespace comp1
             PointF c = new Point((int)x, (int)y);
             PointF[] pnt = { a, b, c };
             canvass.g.DrawPolygon(canvass.pen, pnt);
-
+            if (canvass.fill)
+            {
+                canvass.g.FillPolygon(canvass.brush, pnt);
+            }
         }
     }
 }
