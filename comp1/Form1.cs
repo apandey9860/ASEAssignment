@@ -52,15 +52,29 @@ namespace comp1
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.ShowDialog();
-            OutputBitmap.Save(saveFileDialog1.FileName);
+            try
+            {
+                saveFileDialog1.ShowDialog();
+                OutputBitmap.Save(saveFileDialog1.FileName);
+            }
+            catch (Exception exec)
+            {
+                MessageBox.Show(exec.ToString());
+            }
             //OutputWindow.Image = new Bitmap("image1.jpg");
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            OutputWindow.Load(openFileDialog1.FileName);
+            try
+            {
+                openFileDialog1.ShowDialog();
+                OutputWindow.Load(openFileDialog1.FileName);
+            }
+            catch (Exception exec)
+            {
+                MessageBox.Show(exec.ToString());
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

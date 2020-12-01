@@ -10,7 +10,7 @@ namespace comp1
 {
     class parseCommand
     {
-        int x=0;
+        int lineNum=0;
         public void Command(String command, String mulCommand, Canvass MyCanvass)
         {
             if (MyCanvass.err)
@@ -52,11 +52,33 @@ namespace comp1
         }
         public void spl(String[] cmd, Canvass MyCanvass, int n)
         {
+            SyntaxChecking syntax = new SyntaxChecking();
             if (cmd[0].Equals("drawto"))
             {
-                String[] data = cmd[1].Split(',');
-                int x = int.Parse(data[0]);
-                int y = int.Parse(data[1]);
+                String[] data = cmd[1].Split(','); ;
+                int x = 0;
+                int y = 0;
+                try
+                {
+                    if(!int.TryParse(data[0], out x))
+                    {
+                        syntax.ParmChecking(false, data[0], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    if (!int.TryParse(data[1], out y))
+                    {
+                        syntax.ParmChecking(false, data[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                }
+                catch (Exception e)
+                {
+                    syntax.ParmChecking(e, MyCanvass, n, lineNum);
+                    lineNum = lineNum + 20;
+                }
+
+                /*int x = int.Parse(data[0]);
+                int y = int.Parse(data[1]);*/
                 if (!MyCanvass.err)
                 {
                     MyCanvass.DrawLine(x, y);
@@ -64,17 +86,53 @@ namespace comp1
             }
             else if (cmd[0].Equals("moveto"))
             {
-                String[] data = cmd[1].Split(',');
-                int x = int.Parse(data[0]);
-                int y = int.Parse(data[1]);
+                String[] data = cmd[1].Split(','); ;
+                int x = 0;
+                int y = 0;
+                try
+                {
+                    if (!int.TryParse(data[0], out x))
+                    {
+                        syntax.ParmChecking(false, data[0], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    if (!int.TryParse(data[1], out y))
+                    {
+                        syntax.ParmChecking(false, data[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                }
+                catch (Exception e)
+                {
+                    syntax.ParmChecking(e, MyCanvass, n, lineNum);
+                    lineNum = lineNum + 20;
+                }
                 if (!MyCanvass.err)
                     MyCanvass.MoveTo(x, y);
             }
             else if (cmd[0].Equals("rectangle"))
             {
-                String[] data = cmd[1].Split(',');
-                int x = int.Parse(data[0]);
-                int y = int.Parse(data[1]);
+                String[] data = cmd[1].Split(','); ;
+                int x = 0;
+                int y = 0;
+                try
+                {
+                    if (!int.TryParse(data[0], out x))
+                    {
+                        syntax.ParmChecking(false, data[0], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    if (!int.TryParse(data[1], out y))
+                    {
+                        syntax.ParmChecking(false, data[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                }
+                catch (Exception e)
+                {
+                    syntax.ParmChecking(e, MyCanvass, n, lineNum);
+                    lineNum = lineNum + 20;
+                }
                 if (!MyCanvass.err)
                 {
                     Shape rect = new DrawSquare(x, y);
@@ -83,10 +141,33 @@ namespace comp1
             }
             else if (cmd[0].Equals("triangle"))
             {
-                String[] data = cmd[1].Split(',');
-                int x = int.Parse(data[0]);
-                int y = int.Parse(data[1]);
-                int z = int.Parse(data[2]);
+                String[] data = cmd[1].Split(','); ;
+                int x = 0;
+                int y = 0;
+                int z = 0;
+                try
+                {
+                    if (!int.TryParse(data[0], out x))
+                    {
+                        syntax.ParmChecking(false, data[0], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    if (!int.TryParse(data[1], out y))
+                    {
+                        syntax.ParmChecking(false, data[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    if(!int.TryParse(data[2],out z))
+                    {
+                        syntax.ParmChecking(false, data[2], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                }
+                catch (Exception e)
+                {
+                    syntax.ParmChecking(e, MyCanvass, n, lineNum);
+                    lineNum = lineNum + 20;
+                }
                 if (!MyCanvass.err)
                 {
                     Shape tri = new DrawTriangle(x, y, z);
@@ -95,15 +176,42 @@ namespace comp1
             }
             else if (cmd[0].Equals("square"))
             {
-                int x = int.Parse(cmd[1]);
-                if (!MyCanvass.err) { 
+                int x = 0;
+                try
+                {
+                    if (!int.TryParse(cmd[1], out x))
+                    {
+                        syntax.ParmChecking(false, cmd[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                }
+                catch (Exception e)
+                {
+                    syntax.ParmChecking(e, MyCanvass, n, lineNum);
+                    lineNum = lineNum + 20;
+                }
+                if (!MyCanvass.err)
+                {
                     Shape sqr = new DrawSquare(x, x);
                     sqr.draw(MyCanvass);
                 }
             }
             else if (cmd[0].Equals("circle"))
             {
-                int x = int.Parse(cmd[1]);
+                int x = 0;
+                try
+                {
+                    if (!int.TryParse(cmd[1], out x))
+                    {
+                        syntax.ParmChecking(false, cmd[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                }
+                catch (Exception e)
+                {
+                    syntax.ParmChecking(e, MyCanvass, n, lineNum);
+                    lineNum = lineNum + 20;
+                }
                 if (!MyCanvass.err)
                 {
                     Shape sqr = new DrawCircle(x);
@@ -113,18 +221,30 @@ namespace comp1
             else if (cmd[0].Equals("pen"))
             {
                 Color color = Color.FromName(cmd[1]);
+                if (color.IsKnownColor == false)
+                {
+                    syntax.ParmChecking(false, cmd[1], n, MyCanvass, lineNum);
+                    lineNum = lineNum + 20;
+                }
                 if (!MyCanvass.err)
                     MyCanvass.set_Pen_Color(color);
             }
             else if (cmd[0].Equals("fill"))
             {
+                bool valOn = cmd[1].Equals("on");
+                bool valOff = cmd[1].Equals("off");
+                if (valOn == false && valOff == false)
+                {
+                    syntax.ParmChecking(false, cmd[1], n, MyCanvass, lineNum);
+                    lineNum = lineNum + 20;
+                }
                 if (!MyCanvass.err)
                 {
-                    if (cmd[1].Equals("on"))
+                    if (valOn)
                     {
                         MyCanvass.fill = true;
                     }
-                    else if (cmd[1].Equals("off"))
+                    else if (valOff)
                     {
                         MyCanvass.fill = false;
                     }
@@ -147,9 +267,9 @@ namespace comp1
             }
             else
             {
-                SyntaxChecking syntax = new SyntaxChecking();
-                syntax.CommandChecking(MyCanvass, n, x);
-                x = x + 20;
+                
+                syntax.CommandChecking(MyCanvass, n, lineNum);
+                lineNum = lineNum + 20;
                 /*Font drawFont = new Font("Arial", 10);
                 SolidBrush drawBrush = new SolidBrush(Color.Black);
                 n++;
