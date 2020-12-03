@@ -122,5 +122,10 @@ namespace comp1
             cmd.Command(command, mulCommand, MyCanvass);
             Refresh();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

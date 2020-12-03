@@ -40,13 +40,14 @@ namespace comp1
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OutputWindow)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // OutputWindow
             // 
-            this.OutputWindow.Location = new System.Drawing.Point(531, 31);
+            this.OutputWindow.Location = new System.Drawing.Point(493, 31);
             this.OutputWindow.Name = "OutputWindow";
             this.OutputWindow.Size = new System.Drawing.Size(570, 350);
             this.OutputWindow.TabIndex = 0;
@@ -55,7 +56,7 @@ namespace comp1
             // 
             // cmdLine
             // 
-            this.cmdLine.Location = new System.Drawing.Point(35, 387);
+            this.cmdLine.Location = new System.Drawing.Point(12, 387);
             this.cmdLine.Name = "cmdLine";
             this.cmdLine.Size = new System.Drawing.Size(465, 22);
             this.cmdLine.TabIndex = 1;
@@ -63,7 +64,7 @@ namespace comp1
             // 
             // ProgramWindow
             // 
-            this.ProgramWindow.Location = new System.Drawing.Point(35, 31);
+            this.ProgramWindow.Location = new System.Drawing.Point(12, 31);
             this.ProgramWindow.Name = "ProgramWindow";
             this.ProgramWindow.Size = new System.Drawing.Size(465, 350);
             this.ProgramWindow.TabIndex = 2;
@@ -71,7 +72,7 @@ namespace comp1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(78, 415);
+            this.button1.Location = new System.Drawing.Point(12, 414);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -86,7 +87,7 @@ namespace comp1
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1135, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1080, 28);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -131,11 +132,22 @@ namespace comp1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(402, 415);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Exit";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 449);
+            this.ClientSize = new System.Drawing.Size(1080, 449);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ProgramWindow);
             this.Controls.Add(this.cmdLine);
@@ -165,6 +177,7 @@ namespace comp1
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
