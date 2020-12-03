@@ -45,6 +45,10 @@ namespace comp1
             yPos = toY; //pen position is moved to the end of the line
         }
 
+        /// <summary>
+        /// Set a specific pen and brush colour
+        /// </summary>
+        /// <param name="c">Colour to set on pen and brush</param>
         public void set_Pen_Color(Color c)
         {
             //Color colour = c.Color;
@@ -53,17 +57,21 @@ namespace comp1
         }
 
         /// <summary>
-        /// Draw a square from current Pen position(xPos, yPos)
+        /// Move from current Pen position(xPos, yPos)
         /// </summary>
-        /// <param name="width">Width/Height of the square</param>
-        
+        /// <param name="toX">x position to move to</param>
+        /// <param name="toY">y position to move to</param>
         public void MoveTo(int toX,int toY)
         {
             xPos = toX;
             yPos = toY;
+            //Pointer for user convenience
             g.DrawRectangle(pen, xPos, yPos, 1, 1);
         }
 
+        /// <summary>
+        /// Reset and clear the Canvass
+        /// </summary>
         public void reset()
         {
             xPos = yPos = 0;
@@ -71,6 +79,10 @@ namespace comp1
             g.Clear(SystemColors.Control);
             g.DrawRectangle(pen, xPos, yPos, 1, 1);
         }
+
+        /// <summary>
+        /// Clear the Canvass without removing the data in variables
+        /// </summary>
         public void clear()
         {
             g.Clear(SystemColors.Control);

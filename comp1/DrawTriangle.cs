@@ -7,11 +7,21 @@ using System.Threading.Tasks;
 
 namespace comp1
 {
+    /// <summary>
+    /// Class which inherits shape and draws a triangle
+    /// </summary>
     class DrawTriangle : Shape
     {
         public int hyp;
         public int bse;
         public int adj;
+
+        /// <summary>
+        /// Set the hypotenuse, base and adjactent of the triangle
+        /// </summary>
+        /// <param name="x">Hypotenuse of the triangle</param>
+        /// <param name="y">Base of the triangle</param>
+        /// <param name="z">Adjacent of the triangle</param>
         public DrawTriangle(int x, int y, int z) : base(x, y)
         {
             hyp = x;
@@ -19,6 +29,10 @@ namespace comp1
             adj = z;
         }
 
+        /// <summary>
+        /// Draws a triangle according to given hypotenuse, base and adjactent
+        /// </summary>
+        /// <param name="canvass">Canvass in which the triangle is drawn</param>
         public override void draw(Canvass canvass)
         {
 

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace comp1
 {
+    /// <summary>
+    /// Displays a form for user input and interaction
+    /// </summary>
     public partial class Form1 : Form
     {
         const int bitmapVal1 = 640;
@@ -19,15 +22,23 @@ namespace comp1
         Canvass MyCanvass;
         public Graphics g;
 
+        /// <summary>
+        /// Initialize form components and Load canvass
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
             MyCanvass = new Canvass(Graphics.FromImage(OutputBitmap));
         }
 
-
+        /// <summary>
+        /// Function which runs on user key press in cmdLine within the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">The key which is pressed by user in current context</param>
         private void cmdLine_KeyDown(object sender, KeyEventArgs e)
         {
+            //Only runs when the Enter key is pressed
             if (e.KeyCode == Keys.Enter)
             {
                 String command = cmdLine.Text.Trim().ToLower();
@@ -38,6 +49,11 @@ namespace comp1
             }
         }
 
+        /// <summary>
+        /// Loads picturebox to Graphics
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Paint event argument for the picturebox</param>
         public void OutputWindow_Paint(object sender, PaintEventArgs e)
         {
             g = e.Graphics;
@@ -46,12 +62,13 @@ namespace comp1
 
 
         /// <summary>
-        /// 
+        /// Save the Bitmap image in current picturebox
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="e">Contains information for current event</param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Exception handling in case save dialog is opened and not used
             try
             {
                 saveFileDialog1.ShowDialog();
@@ -61,11 +78,16 @@ namespace comp1
             {
                 MessageBox.Show(exec.ToString());
             }
-            //OutputWindow.Image = new Bitmap("image1.jpg");
         }
 
+        /// <summary>
+        /// Load the Bitmap image in current picturebox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Contains information for current event</param>
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Exception handling in case load dialog is opened and not used
             try
             {
                 openFileDialog1.ShowDialog();
@@ -77,11 +99,21 @@ namespace comp1
             }
         }
 
+        /// <summary>
+        /// Terminates the application on clicking menu item Exit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Contains information for current event</param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Runs the program on button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Contains information for current event</param>
         private void button1_Click(object sender, EventArgs e)
         {
             String command = cmdLine.Text.Trim().ToLower();
@@ -89,18 +121,6 @@ namespace comp1
             parseCommand cmd = new parseCommand();
             cmd.Command(command, mulCommand, MyCanvass);
             Refresh();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            String command = cmdLine.Text.Trim().ToLower();
-            String mulCommand = ProgramWindow.Text.Trim().ToLower();
-            //SyntaxCheck syn = new SyntaxCheck(command, mulCommand);
-        }
-
-        private void SyntaxChecking_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

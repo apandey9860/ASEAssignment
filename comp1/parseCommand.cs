@@ -8,9 +8,19 @@ using System.Windows.Forms;
 
 namespace comp1
 {
-    class parseCommand
+    /// <summary>
+    /// Class which takes user input in textbox/richtextbox and runs according to given instructions
+    /// </summary>
+    public class parseCommand
     {
         int lineNum=0;
+
+        /// <summary>
+        /// Runs further according to given command in cmdLine or ProgramWindow
+        /// </summary>
+        /// <param name="command">User input in cmdLine(Single line textbox)</param>
+        /// <param name="mulCommand">User input in ProgramWindow(Multi line rich textbox)</param>
+        /// <param name="MyCanvass">Canvass in which the user given instruction is implemented</param>
         public void Command(String command, String mulCommand, Canvass MyCanvass)
         {
             if (MyCanvass.err)
@@ -33,12 +43,24 @@ namespace comp1
             }
 
         }
+
+        /// <summary>
+        /// Splits given instruction in cmdLine and executes Simple Programming Language(spl)
+        /// </summary>
+        /// <param name="command">User input in cmdLine(Single line textbox)</param>
+        /// <param name="MyCanvass">Canvass in which the user given instruction is implemented</param>
         public void singleCommand(String command, Canvass MyCanvass)
         {
             String[] cmd = command.Split(' ');
             spl(cmd, MyCanvass, -1);
 
         }
+
+        /// <summary>
+        /// Splits given instruction in ProgramWindow and executes Simple Programming Language(spl) based on the number of lines
+        /// </summary>
+        /// <param name="command">User input in ProgramWindow(Multi line rich textbox)</param>
+        /// <param name="MyCanvass">Canvass in which the user given instruction is implemented</param>
         public void multiCommand(String command, Canvass MyCanvass)
         {
             String[] val = command.Split('\n');
@@ -50,6 +72,13 @@ namespace comp1
                 n++;
             }
         }
+
+        /// <summary>
+        /// Simple Programming Language(spl) which check the user inputted commands for errors and exception and runs if no error is found
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <param name="MyCanvass"></param>
+        /// <param name="n"></param>
         public void spl(String[] cmd, Canvass MyCanvass, int n)
         {
             SyntaxChecking syntax = new SyntaxChecking();
@@ -76,9 +105,6 @@ namespace comp1
                     syntax.ParmChecking(e, MyCanvass, n, lineNum);
                     lineNum = lineNum + 20;
                 }
-
-                /*int x = int.Parse(data[0]);
-                int y = int.Parse(data[1]);*/
                 if (!MyCanvass.err)
                 {
                     MyCanvass.DrawLine(x, y);
@@ -160,6 +186,11 @@ namespace comp1
                     if(!int.TryParse(data[2],out z))
                     {
                         syntax.ParmChecking(false, data[2], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    if (x != (y + z))
+                    {
+                        syntax.ParmChecking(false, "Right-Angled Triangle Exec", n, MyCanvass,lineNum);
                         lineNum = lineNum + 20;
                     }
                 }
@@ -270,23 +301,6 @@ namespace comp1
                 
                 syntax.CommandChecking(MyCanvass, n, lineNum);
                 lineNum = lineNum + 20;
-                /*Font drawFont = new Font("Arial", 10);
-                SolidBrush drawBrush = new SolidBrush(Color.Black);
-                n++;
-                if (n != 0)
-                {
-                    if (x == 0)
-                    {
-                        MyCanvass.reset();
-                    }
-                    MyCanvass.g.DrawString("Command on line " + (n) + " does not exist", drawFont, drawBrush, 0, 0+x);
-                    x=x+20;
-                }
-                else
-                {
-                    MyCanvass.g.DrawString("Command does not exist", drawFont, drawBrush, 0, 0);
-                }
-                n--;*/
             }
         }
     }
