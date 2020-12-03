@@ -31,10 +31,10 @@ namespace comp1
         /// <param name="canvass">Canvass in which the square/rectangle is drawn</param>
         public override void draw(Canvass canvass)
         {
-            canvass.g.DrawRectangle(canvass.pen, canvass.xPos, canvass.yPos, width, height);
+            canvass.g.DrawRectangle(canvass.pen, canvass.xPos, canvass.yPos, width, height);//Draw a rectangle
             if (canvass.fill)
             {
-                canvass.g.FillRectangle(canvass.brush, canvass.xPos, canvass.yPos, width, height);
+                canvass.g.FillRectangle(canvass.brush, canvass.xPos, canvass.yPos, width, height);//Draws a filled rectangle if fill is true
             }
         }
     }

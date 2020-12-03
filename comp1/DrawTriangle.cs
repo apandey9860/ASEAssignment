@@ -44,10 +44,10 @@ namespace comp1
 
             PointF c = new Point((int)x, (int)y);
             PointF[] pnt = { a, b, c };
-            canvass.g.DrawPolygon(canvass.pen, pnt);
+            canvass.g.DrawPolygon(canvass.pen, pnt);//Draws a triangle
             if (canvass.fill)
             {
-                canvass.g.FillPolygon(canvass.brush, pnt);
+                canvass.g.FillPolygon(canvass.brush, pnt);//Draws a filled triangle if fill is true
             }
         }
     }

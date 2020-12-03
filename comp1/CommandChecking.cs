@@ -20,22 +20,22 @@ namespace comp1
         /// <param name="x">For the location in the canvass where error message is dispalyed</param>
         public void CommandChecking(Canvass MyCanvass, int n, int x)
         {
-            Font drawFont = new Font("Arial", 10);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            Font drawFont = new Font("Arial", 10);//create font
+            SolidBrush drawBrush = new SolidBrush(Color.Black);//create brush
             n++;
             if (n != 0)
             {
                 if (x==0)
                 {
-                    MyCanvass.reset();
+                    MyCanvass.reset();//resets if error has never been found prevoiusly
                 }
-                MyCanvass.g.DrawString("Command on line " + (n) + " does not exist", drawFont, drawBrush, 0, 0 + x);
+                MyCanvass.g.DrawString("Command on line " + (n) + " does not exist", drawFont, drawBrush, 0, 0 + x);//displays where and what the problem is(in case of multiline commands)(for component2)
             }
             else
             {
-                MyCanvass.g.DrawString("Command does not exist", drawFont, drawBrush, 0, 0);
+                MyCanvass.g.DrawString("Command does not exist", drawFont, drawBrush, 0, 0);//displays if the command is not recognized
             }
-            MyCanvass.err = true;
+            MyCanvass.err = true;//sets the err to true
         }
 
         /// <summary>
@@ -50,25 +50,28 @@ namespace comp1
         {
             if (!par)
             {
-                Font drawFont = new Font("Arial", 10);
-                SolidBrush drawBrush = new SolidBrush(Color.Black);
+                Font drawFont = new Font("Arial", 10);//create font
+                SolidBrush drawBrush = new SolidBrush(Color.Black);//create brush
                 if (x == 0)
                 {
-                    MyCanvass.reset();
+                    MyCanvass.reset();//resets if error has never been found prevoiusly
                 }
                 if (data.Equals("Right-Angled Triangle Exec"))
                 {
+                    //displays if triangle parameters are valid can a triangle cannot be drawn
                     MyCanvass.g.DrawString("Cannot draw triangle with given measurements", drawFont, drawBrush, 0, 0 + x);
                 }
                 else if ((n + 1) == 0)
                 {
+                    //displays if parameters are invalid
                     MyCanvass.g.DrawString("Paramater " + data + " is invalid", drawFont, drawBrush, 0, 0 + x);
                 }
                 else
                 {
+                    //displays if parameters are invalid(for multi line commands)(for component2)
                     MyCanvass.g.DrawString("Paramater " + data + " on line " + (n + 1) + " is invalid", drawFont, drawBrush, 0, 0 + x);
                 }
-                MyCanvass.err = true;
+                MyCanvass.err = true;//sets the err to true
             }
         }
 
@@ -81,21 +84,23 @@ namespace comp1
         /// <param name="x">For the location in the canvass where error message is dispalyed</param>
         public void ParmChecking(Exception e, Canvass MyCanvass, int n, int x)
         {
-            Font drawFont = new Font("Arial", 10);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            Font drawFont = new Font("Arial", 10);//create font
+            SolidBrush drawBrush = new SolidBrush(Color.Black);//create brush
             if (x == 0)
             {
-                MyCanvass.reset();
+                MyCanvass.reset();//resets if error has never been found prevoiusly
             }
             if ((n + 1) == 0)
             {
+                //displays if number of parameters are invalid
                 MyCanvass.g.DrawString("Wrong number of parameters inputted", drawFont, drawBrush, 0, 0 + x);
             }
             else
             {
+                //displays if number of parameters are invalid(for multi line commands)(for component2)
                 MyCanvass.g.DrawString("Wrong number of parameters inputted on line " + (n + 1), drawFont, drawBrush, 0, 0 + x);
             }
-            MyCanvass.err = true;
+            MyCanvass.err = true;//sets the err to true
         }
     }
 }

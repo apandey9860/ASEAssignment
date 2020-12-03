@@ -29,10 +29,10 @@ namespace comp1
         /// <param name="canvass">Canvass in which the triangle is drawn</param>
         public override void draw(Canvass canvass)
         {
-            canvass.g.DrawEllipse(canvass.pen, canvass.xPos, canvass.yPos, (radius * 2), (radius * 2));
+            canvass.g.DrawEllipse(canvass.pen, canvass.xPos, canvass.yPos, (radius * 2), (radius * 2));//Draws a circle
             if (canvass.fill)
             {
-                canvass.g.FillEllipse(canvass.brush, canvass.xPos, canvass.yPos, (radius * 2), (radius * 2));
+                canvass.g.FillEllipse(canvass.brush, canvass.xPos, canvass.yPos, (radius * 2), (radius * 2));//Draws a filled circle if fill is true
             }
         }
     }

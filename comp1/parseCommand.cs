@@ -23,16 +23,18 @@ namespace comp1
         /// <param name="MyCanvass">Canvass in which the user given instruction is implemented</param>
         public void Command(String command, String mulCommand, Canvass MyCanvass)
         {
+            //to reset err value and canvass after execution in case of an error
             if (MyCanvass.err)
             {
                 MyCanvass.reset();
-                MyCanvass.err = false;
+                MyCanvass.err = false;//sets err to false
             }
-            
+            //if there no input in rich text box(program window)
             if (mulCommand.Length.Equals(0))
             {
                 singleCommand(command, MyCanvass);
             }
+            //if 'run' is used in command line
             else if (command.Equals("run"))
             {
                 multiCommand(mulCommand, MyCanvass);
@@ -65,6 +67,7 @@ namespace comp1
         {
             String[] val = command.Split('\n');
             int n = 0;
+            //loop for input in rich text box/program window
             while (n < val.Length)
             {
                 String[] cmd = val[n].Split(' ');
@@ -82,6 +85,8 @@ namespace comp1
         public void spl(String[] cmd, Canvass MyCanvass, int n)
         {
             SyntaxChecking syntax = new SyntaxChecking();
+
+            ///Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
             if (cmd[0].Equals("drawto"))
             {
                 String[] data = cmd[1].Split(','); ;
