@@ -76,6 +76,8 @@ namespace comp1
         {
             xPos = yPos = 0;
             pen = new Pen(Color.Black, 1);//default pen with constants
+            err = false;
+            fill = false;
             g.Clear(SystemColors.Control);
             g.DrawRectangle(pen, xPos, yPos, 1, 1);
         }

@@ -86,7 +86,7 @@ namespace comp1
         {
             SyntaxChecking syntax = new SyntaxChecking();
 
-            ///Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
+            //Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
             if (cmd[0].Equals("drawto"))
             {
                 String[] data = cmd[1].Split(','); ;
@@ -193,11 +193,11 @@ namespace comp1
                         syntax.ParmChecking(false, data[2], n, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
-                    if (x != (y + z))
+                    /*if (x != (y + z))
                     {
                         syntax.ParmChecking(false, "Right-Angled Triangle Exec", n, MyCanvass,lineNum);
                         lineNum = lineNum + 20;
-                    }
+                    }*/
                 }
                 catch (Exception e)
                 {
