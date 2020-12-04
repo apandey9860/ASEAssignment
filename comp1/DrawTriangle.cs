@@ -43,7 +43,6 @@ namespace comp1
             canvass.g.DrawPolygon(canvass.pen, pnt);//Draws a triangle
             if (canvass.fill)
             {
-                
                 canvass.g.FillPolygon(canvass.brush, pnt);//Draws a filled triangle if fill is true
             }
         }

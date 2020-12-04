@@ -56,7 +56,7 @@ namespace comp1
                 {
                     MyCanvass.reset();//resets if error has never been found prevoiusly
                 }
-                else if ((n + 1) == 0)
+                if ((n + 1) == 0)
                 {
                     //displays if parameters are invalid
                     MyCanvass.g.DrawString("Paramater " + data + " is invalid", drawFont, drawBrush, 0, 0 + x);

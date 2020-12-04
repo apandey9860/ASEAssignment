@@ -89,7 +89,7 @@ namespace comp1
             //Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
             if (cmd[0].Equals("drawto"))
             {
-                String[] data = cmd[1].Split(','); ;
+                String[] data = cmd[1].Split(',');
                 int x = 0;
                 int y = 0;
                 try

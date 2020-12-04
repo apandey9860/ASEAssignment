@@ -154,12 +154,12 @@ namespace comp1
             message = message + "3. To create a square: \nsquare x (where x is the width of the square) \n";
             message = message + "4. To create a rectangle: \nrectangle x,y (where x is the width and y is the height of the rectangle)\n";
             message = message + "5. To create a triangle: \ntriangle x,y,z (where x,y,z is the hyp,base and adjacent of the triangle)\n";
-            message = message + "6. To create a circle: \nrectangle x (where x is the radius of the circle)\n";
-            message = message + "7. To choose a color for pen: \npen color (where coolr is the desired color for the pen)\n";
+            message = message + "6. To create a circle: \ncircle x (where x is the radius of the circle)\n";
+            message = message + "7. To choose a color for pen: \npen color (where color is the desired color for the pen)\n";
             message = message + "8. To choose to fill: \nfill on/off (On or off depending on the user)\n";
             message = message + "9. To clear the canvass: \nclear (Clear the canvass)\n";
             message = message + "10. To reset the canvass: \nreset (Clear the canvass and data)\n";
-            message = message + "11. To run the command: \nrun (runs the command)\n";
+            message = message + "11. To run the command: \nrun (runs the command in program window)\n";
             MessageBox.Show(message);
         }
 
