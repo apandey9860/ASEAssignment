@@ -123,9 +123,156 @@ namespace comp1
             Refresh();
         }
 
+        /// <summary>
+        /// Exitx the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// About Program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Created By:\nAashish Bhattarai \n2020");
+        }
+
+        /// <summary>
+        /// Syntax of all commands in Program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void syntaxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String message = "Syntax:\n";
+            message = message + "1. To move the pointer: \nmoveto x,y (where x and y are pointer you want to move to) \n";
+            message = message + "2. To draw to a point: \ndrawto x,y (where x and y are pointer you want to draw to) \n";
+            message = message + "3. To create a square: \nsquare x (where x is the width of the square) \n";
+            message = message + "4. To create a rectangle: \nrectangle x,y (where x is the width and y is the height of the rectangle)\n";
+            message = message + "5. To create a triangle: \ntriangle x,y,z (where x,y,z is the hyp,base and adjacent of the triangle)\n";
+            message = message + "6. To create a circle: \nrectangle x (where x is the radius of the circle)\n";
+            message = message + "7. To choose a color for pen: \npen color (where coolr is the desired color for the pen)\n";
+            message = message + "8. To choose to fill: \nfill on/off (On or off depending on the user)\n";
+            message = message + "9. To clear the canvass: \nclear (Clear the canvass)\n";
+            message = message + "10. To reset the canvass: \nreset (Clear the canvass and data)\n";
+            message = message + "11. To run the command: \nrun (runs the command)\n";
+            MessageBox.Show(message);
+        }
+
+        /// <summary>
+        /// Syntax of moveto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void movePointerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To move the pointer: \nmoveto x,y (where x and y are pointer you want to move to) \n");
+        }
+
+        /// <summary>
+        /// Syntax of drawto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void drawLineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To draw to a point: \ndrawto x,y (where x and y are pointer you want to draw to) \n");
+        }
+
+        /// <summary>
+        /// Syntax of square
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void drawSquareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To create a square: \nsquare x (where x is the width of the square) \n");
+        }
+
+        /// <summary>
+        /// Syntax of rectangle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void drawRectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To create a rectangle: \nrectangle x,y (where x is the width and y is the height of the rectangle)\n");
+        }
+
+        /// <summary>
+        /// Syntax of triagnle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void drawTriangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To create a triangle: \ntriangle x,y,z (where x,y,z is the hyp,base and adjacent of the triangle)\n");
+        }
+
+        /// <summary>
+        /// Syntax of circle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void drawCircleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To create a circle: \nrectangle x (where x is the radius of the circle)\n");
+        }
+
+        /// <summary>
+        /// Syntax of pen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void chooseAColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To choose a color for pen: \npen color (where coolr is the desired color for the pen)\n");
+        }
+
+        /// <summary>
+        /// Syntax of fill
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void chooseFillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To choose to fill: \nfill on/off (On or off depending on the user)\n");
+        }
+
+        /// <summary>
+        /// Syntax of clear
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To clear the canvass: \nclear (Clear the canvass)\n");
+        }
+
+        /// <summary>
+        /// Syntax of reset
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To reset the canvass: \nreset (Clear the canvass and data)\n");
+        }
+
+        /// <summary>
+        /// Command run
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Event Argument</param>
+        private void runCommandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("To run the command: \nrun (runs the command entered in Program Window)\n");
         }
     }
 }

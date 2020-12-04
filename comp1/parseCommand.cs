@@ -86,7 +86,7 @@ namespace comp1
         {
             SyntaxChecking syntax = new SyntaxChecking();
 
-            ///Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
+            //Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
             if (cmd[0].Equals("drawto"))
             {
                 String[] data = cmd[1].Split(','); ;
