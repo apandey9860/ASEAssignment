@@ -193,11 +193,11 @@ namespace comp1
                         syntax.ParmChecking(false, data[2], n, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
-                    if (x != (y + z))
+                    /*if (x != (y + z))
                     {
                         syntax.ParmChecking(false, "Right-Angled Triangle Exec", n, MyCanvass,lineNum);
                         lineNum = lineNum + 20;
-                    }
+                    }*/
                 }
                 catch (Exception e)
                 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,18 +36,14 @@ namespace comp1
         /// <param name="canvass">Canvass in which the triangle is drawn</param>
         public override void draw(Canvass canvass)
         {
-
             PointF a = new Point(canvass.xPos, canvass.yPos);
-            PointF b = new Point(bse, 0);
-
-            double y = (Math.Pow(bse, 2) + Math.Pow(hyp, 2) - Math.Pow(adj, 2)) / (2 * bse);
-            double x = Math.Sqrt(Math.Pow(hyp, 2) - Math.Pow(y, 2));
-
-            PointF c = new Point((int)x, (int)y);
+            PointF b = new Point(canvass.xPos, canvass.yPos + bse);
+            PointF c = new PointF(canvass.xPos + adj, canvass.yPos + hyp);
             PointF[] pnt = { a, b, c };
             canvass.g.DrawPolygon(canvass.pen, pnt);//Draws a triangle
             if (canvass.fill)
             {
+                
                 canvass.g.FillPolygon(canvass.brush, pnt);//Draws a filled triangle if fill is true
             }
         }

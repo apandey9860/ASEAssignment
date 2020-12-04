@@ -56,11 +56,6 @@ namespace comp1
                 {
                     MyCanvass.reset();//resets if error has never been found prevoiusly
                 }
-                if (data.Equals("Right-Angled Triangle Exec"))
-                {
-                    //displays if triangle parameters are valid can a triangle cannot be drawn
-                    MyCanvass.g.DrawString("Cannot draw triangle with given measurements", drawFont, drawBrush, 0, 0 + x);
-                }
                 else if ((n + 1) == 0)
                 {
                     //displays if parameters are invalid

@@ -74,9 +74,8 @@ namespace comp1
                 saveFileDialog1.ShowDialog();
                 OutputBitmap.Save(saveFileDialog1.FileName);
             }
-            catch (Exception exec)
+            catch (Exception)
             {
-                MessageBox.Show(exec.ToString());
             }
         }
 
@@ -93,9 +92,8 @@ namespace comp1
                 openFileDialog1.ShowDialog();
                 OutputWindow.Load(openFileDialog1.FileName);
             }
-            catch (Exception exec)
+            catch (Exception)
             {
-                MessageBox.Show(exec.ToString());
             }
         }
 
