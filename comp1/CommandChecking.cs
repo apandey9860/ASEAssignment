@@ -10,7 +10,7 @@ namespace comp1
     /// <summary>
     /// Class which chekcs user inputted commands for errors or exceptions
     /// </summary>
-    class SyntaxChecking
+    public class SyntaxChecking
     {
         /// <summary>
         /// Displays error when entered command does not exist
