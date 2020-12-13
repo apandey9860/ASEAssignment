@@ -15,6 +15,7 @@ namespace comp1
     {
         //Instance data for x,y pos, pen and graphic context
         public Graphics g;
+        public VarStore v;
         public Pen pen;
         public SolidBrush brush;
         public int xPos, yPos;
@@ -28,6 +29,7 @@ namespace comp1
         public Canvass(Graphics g)
         {
             this.g = g;
+            v = new VarStore();
             xPos = yPos = 0;
             pen = new Pen(Color.Black, 1);//default pen with constants
             brush = new SolidBrush(Color.Black);
