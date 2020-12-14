@@ -127,6 +127,13 @@ namespace comp1
             String[] cmd = val[0].Split(' ');
             int x = 0;
             bool var1 = false;
+            List<String> tempList = new List<string>();
+            int tempInt = 1;
+            while (tempInt < val.Length)
+            {
+                tempList.Add(val[tempInt]);
+                tempInt++;
+            }
             try
             {
                 if (cmd[1].Equals("for"))
@@ -153,13 +160,8 @@ namespace comp1
 
                     for (int b = 0; b < x; b++)
                     {
-                        int i = 1;
-                        while (i < (val.Length))
-                        {
-                            String[] tmpCmd = val[i].ToLower().Trim().Split(' ');
-                            spl(tmpCmd, MyCanvass, n);
-                            i++;
-                        }
+                        tempData = string.Join("\n", tempList);
+                        multiCommand(tempData, MyCanvass);
                     }
                 }
 
@@ -184,6 +186,13 @@ namespace comp1
             String[] cmd = val[0].Split(' ');
             int x = 0;
             bool var1 = false;
+            List<String> tempList = new List<string>();
+            int tempInt = 1;
+            while (tempInt < val.Length)
+            {
+                tempList.Add(val[tempInt]);
+                tempInt++;
+            }
 
             try
             {
@@ -192,7 +201,7 @@ namespace comp1
                     String[] tempVal = cmd[1].Split('<');
                     if (!int.TryParse(tempVal[1], out x))
                     {
-                        if (MyCanvass.v.DataExists(tempVal[1]))
+                        if (!MyCanvass.v.DataExists(tempVal[1]))
                         {
                             var1 = true;
                         }
@@ -208,7 +217,7 @@ namespace comp1
                     }
                     else
                     {
-                        if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
+                        if (!MyCanvass.v.DataExists(tempVal[0]))
                         {
                             var1 = true;
                         }
@@ -221,13 +230,8 @@ namespace comp1
                         {
                             while (MyCanvass.v.GetData(tempVal[0]) < x)
                             {
-                                int i = 1;
-                                while (i < (val.Length))
-                                {
-                                    String[] tmpCmd = val[i].ToLower().Trim().Split(' ');
-                                    spl(tmpCmd, MyCanvass, n);
-                                    i++;
-                                }
+                                tempData = string.Join("\n", tempList);
+                                multiCommand(tempData, MyCanvass);
                             }
                         }
                     }
@@ -237,7 +241,7 @@ namespace comp1
                     String[] tempVal = cmd[1].Split('>');
                     if (!int.TryParse(tempVal[1], out x))
                     {
-                        if (MyCanvass.v.GetData(tempVal[1]).Equals(null))
+                        if (!MyCanvass.v.DataExists(tempVal[1]))
                         {
                             var1 = true;
                         }
@@ -253,7 +257,7 @@ namespace comp1
                     }
                     else
                     {
-                        if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
+                        if (!MyCanvass.v.DataExists(tempVal[0]))
                         {
                             var1 = true;
                         }
@@ -266,13 +270,8 @@ namespace comp1
                         {
                             while (MyCanvass.v.GetData(tempVal[0]) > x)
                             {
-                                int i = 1;
-                                while (i < (val.Length))
-                                {
-                                    String[] tmpCmd = val[i].Trim().Split(' ');
-                                    spl(tmpCmd, MyCanvass, n);
-                                    i++;
-                                }
+                                tempData = string.Join("\n", tempList);
+                                multiCommand(tempData, MyCanvass);
                             }
                         }
                     }
@@ -282,7 +281,7 @@ namespace comp1
                     String[] tempVal = cmd[1].Split("==".ToCharArray());
                     if (!int.TryParse(tempVal[1], out x))
                     {
-                        if (MyCanvass.v.GetData(tempVal[1]).Equals(null))
+                        if (!MyCanvass.v.DataExists(tempVal[1]))
                         {
                             var1 = true;
                         }
@@ -298,7 +297,7 @@ namespace comp1
                     }
                     else
                     {
-                        if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
+                        if (!MyCanvass.v.DataExists(tempVal[0]))
                         {
                             var1 = true;
                         }
@@ -311,13 +310,8 @@ namespace comp1
                         {
                             while (MyCanvass.v.GetData(tempVal[0]) == x)
                             {
-                                int i = 1;
-                                while (i < (val.Length))
-                                {
-                                    String[] tmpCmd = val[i].Trim().Split(' ');
-                                    spl(tmpCmd, MyCanvass, n);
-                                    i++;
-                                }
+                                tempData = string.Join("\n", tempList);
+                                multiCommand(tempData, MyCanvass);
                             }
                         }
                     }
