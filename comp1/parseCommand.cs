@@ -67,6 +67,7 @@ namespace comp1
         {
             String[] val = command.Split('\n');
             int n = 0;
+            int x = 0;
             //loop for input in rich text box/program window
             while (n < val.Length)
             {
@@ -76,12 +77,39 @@ namespace comp1
                     List<String> data = new List<string>();
                     do
                     {
+                        x++;
                         data.Add(val[n]);
                         n++;
                         cmd = val[n].Split(' ');
                     }
                     while (!cmd[0].Equals("endwhile"));
-                    LoopWhile(data, MyCanvass, n);
+                    LoopWhile(data, MyCanvass, n, x);
+                }
+                else if (cmd[0].Equals("if"))
+                {
+                    /*List<String> data = new List<string>();
+                    do
+                    {
+                        x++;
+                        data.Add(val[n]);
+                        n++;
+                        cmd = val[n].Split(' ');
+                    }
+                    while (!cmd[0].Equals("endwhile"));
+                    LoopWhile(data, MyCanvass, n, x);*/
+                }
+                else if (cmd[0].Equals("loop"))
+                {
+                    List<String> data = new List<string>();
+                    do
+                    {
+                        x++;
+                        data.Add(val[n]);
+                        n++;
+                        cmd = val[n].Split(' ');
+                    }
+                    while (!cmd[0].Equals("endfor"));
+                    LoopFor(data, MyCanvass, n, x);
                 }
                 else
                 {
@@ -91,169 +119,221 @@ namespace comp1
                 n++;
             }
         }
-
-        public void LoopWhile(List<String> data, Canvass MyCanvass, int n)
+        
+        public void LoopFor(List<String> data, Canvass MyCanvass, int n, int z)
         {
             string tempData = string.Join("\n", data);
             String[] val = tempData.Split('\n');
             String[] cmd = val[0].Split(' ');
             int x = 0;
             bool var1 = false;
-            
-            /*while (i < val.Length)
+            try
             {
-                MessageBox.Show(val[i]);
-                i++;
-            }*/
-            if (cmd[1].Split('<').Length>1)
-            {
-                String[] tempVal = cmd[1].Split('<');
-                if (!int.TryParse(tempVal[1], out x))
+                if (cmd[1].Equals("for"))
                 {
-                    if (MyCanvass.v.GetData(tempVal[1]).Equals(null))
+                    if (!int.TryParse(cmd[2], out x))
                     {
-                        MessageBox.Show("problem");
-                        var1 = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("working");
-                        x = MyCanvass.v.GetData(tempVal[1]);
+                        if (!MyCanvass.v.DataExists(cmd[2]))
+                        {
+                            var1 = true;
+                        }
+                        else
+                        {
+                            x = MyCanvass.v.GetData(cmd[2]);
+                        }
                     }
                 }
                 if (var1)
                 {
-                    MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                    MyCanvass.syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
                     lineNum = lineNum + 20;
                 }
                 else
                 {
-                    if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
+
+                    for (int b = 0; b < x; b++)
                     {
-                        MessageBox.Show("problem");
-                        var1 = true;
-                    }
-                    if (var1)
-                    {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
-                        lineNum = lineNum + 20;
-                    }
-                    else {
-                        /*MessageBox.Show("working part 2");*/
-                        while (MyCanvass.v.GetData(tempVal[0]) < x)
+                        int i = 1;
+                        while (i < (val.Length))
                         {
-                            /*MessageBox.Show("working part 3");*/
-                            int i = 1;
-                            while (i < (val.Length))
-                            {
-                                String[] tmpCmd = val[i].ToLower().Trim().Split(' ');
-                                spl(tmpCmd, MyCanvass, n);
-                                i++;
-                            }
+                            String[] tmpCmd = val[i].ToLower().Trim().Split(' ');
+                            spl(tmpCmd, MyCanvass, n);
+                            i++;
                         }
                     }
                 }
+
             }
-            else if (cmd[1].Split('>').Length > 1)
+            catch
             {
-                String[] tempVal = cmd[1].Split('>');
-                if (!int.TryParse(tempVal[1], out x))
-                {
-                    if (MyCanvass.v.GetData(tempVal[1]).Equals(null))
-                    {
-                        MessageBox.Show("problem");
-                        var1 = true;
-                    }
-                    else
-                    {
-                        /*MessageBox.Show("working");*/
-                        x = MyCanvass.v.GetData(tempVal[1]);
-                    }
-                }
-                if (var1)
-                {
-                    MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
-                    lineNum = lineNum + 20;
-                }
-                else
-                {
-                    if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
-                    {
-                        MessageBox.Show("problem");
-                        var1 = true;
-                    }
-                    if (var1)
-                    {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
-                        lineNum = lineNum + 20;
-                    }
-                    else
-                    {
-                        /*MessageBox.Show("working part 2");*/
-                        while (MyCanvass.v.GetData(tempVal[0]) > x)
-                        {
-                            /*MessageBox.Show("working part 3");*/
-                            int i = 1;
-                            while (i < (val.Length))
-                            {
-                                String[] tmpCmd = val[i].Trim().Split(' ');
-                                spl(tmpCmd, MyCanvass, n);
-                                i++;
-                            }
-                        }
-                    }
-                }
+                MyCanvass.syntax.ParmChecking(false, "", n - z, MyCanvass, lineNum);
+                lineNum = lineNum + 20;
             }
-            else if (cmd[1].Split("==".ToCharArray()).Length > 1)
+        }
+
+        public void ConditionIf(List<String> data, Canvass MyCanvass, int n, int z)
+        {
+
+        }
+
+
+        public void LoopWhile(List<String> data, Canvass MyCanvass, int n, int z)
+        {
+            string tempData = string.Join("\n", data);
+            String[] val = tempData.Split('\n');
+            String[] cmd = val[0].Split(' ');
+            int x = 0;
+            bool var1 = false;
+
+            try
             {
-                String[] tempVal = cmd[1].Split("==".ToCharArray());
-                if (!int.TryParse(tempVal[1], out x))
+                if (cmd[1].Split('<').Length > 1)
                 {
-                    if (MyCanvass.v.GetData(tempVal[1]).Equals(null))
+                    String[] tempVal = cmd[1].Split('<');
+                    if (!int.TryParse(tempVal[1], out x))
                     {
-                        MessageBox.Show("problem");
-                        var1 = true;
-                    }
-                    else
-                    {
-                        /*MessageBox.Show("working");*/
-                        x = MyCanvass.v.GetData(tempVal[1]);
-                    }
-                }
-                if (var1)
-                {
-                    MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
-                    lineNum = lineNum + 20;
-                }
-                else
-                {
-                    if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
-                    {
-                        MessageBox.Show("problem");
-                        var1 = true;
+                        if (MyCanvass.v.DataExists(tempVal[1]))
+                        {
+                            var1 = true;
+                        }
+                        else
+                        {
+                            x = MyCanvass.v.GetData(tempVal[1]);
+                        }
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
                     {
-                        /*MessageBox.Show("working part 2");*/
-                        while (MyCanvass.v.GetData(tempVal[0]) == x)
+                        if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
                         {
-                            /*MessageBox.Show("working part 3");*/
-                            int i = 1;
-                            while (i < (val.Length))
+                            var1 = true;
+                        }
+                        if (var1)
+                        {
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            lineNum = lineNum + 20;
+                        }
+                        else
+                        {
+                            while (MyCanvass.v.GetData(tempVal[0]) < x)
                             {
-                                String[] tmpCmd = val[i].Trim().Split(' ');
-                                spl(tmpCmd, MyCanvass, n);
-                                i++;
+                                int i = 1;
+                                while (i < (val.Length))
+                                {
+                                    String[] tmpCmd = val[i].ToLower().Trim().Split(' ');
+                                    spl(tmpCmd, MyCanvass, n);
+                                    i++;
+                                }
                             }
                         }
                     }
                 }
+                else if (cmd[1].Split('>').Length > 1)
+                {
+                    String[] tempVal = cmd[1].Split('>');
+                    if (!int.TryParse(tempVal[1], out x))
+                    {
+                        if (MyCanvass.v.GetData(tempVal[1]).Equals(null))
+                        {
+                            var1 = true;
+                        }
+                        else
+                        {
+                            x = MyCanvass.v.GetData(tempVal[1]);
+                        }
+                    }
+                    if (var1)
+                    {
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    else
+                    {
+                        if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
+                        {
+                            var1 = true;
+                        }
+                        if (var1)
+                        {
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            lineNum = lineNum + 20;
+                        }
+                        else
+                        {
+                            while (MyCanvass.v.GetData(tempVal[0]) > x)
+                            {
+                                int i = 1;
+                                while (i < (val.Length))
+                                {
+                                    String[] tmpCmd = val[i].Trim().Split(' ');
+                                    spl(tmpCmd, MyCanvass, n);
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (cmd[1].Split("==".ToCharArray()).Length > 1)
+                {
+                    String[] tempVal = cmd[1].Split("==".ToCharArray());
+                    if (!int.TryParse(tempVal[1], out x))
+                    {
+                        if (MyCanvass.v.GetData(tempVal[1]).Equals(null))
+                        {
+                            var1 = true;
+                        }
+                        else
+                        {
+                            x = MyCanvass.v.GetData(tempVal[1]);
+                        }
+                    }
+                    if (var1)
+                    {
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    else
+                    {
+                        if (MyCanvass.v.GetData(tempVal[0]).Equals(null))
+                        {
+                            var1 = true;
+                        }
+                        if (var1)
+                        {
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            lineNum = lineNum + 20;
+                        }
+                        else
+                        {
+                            while (MyCanvass.v.GetData(tempVal[0]) == x)
+                            {
+                                int i = 1;
+                                while (i < (val.Length))
+                                {
+                                    String[] tmpCmd = val[i].Trim().Split(' ');
+                                    spl(tmpCmd, MyCanvass, n);
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MyCanvass.syntax.ParmChecking(false, "", n-z, MyCanvass, lineNum);
+                    lineNum = lineNum + 20;
+                }
             }
+            catch
+            {
+                MyCanvass.syntax.ParmChecking(false, "", n-z, MyCanvass, lineNum);
+                lineNum = lineNum + 20;
+            }
+
             
         }
 
@@ -267,6 +347,7 @@ namespace comp1
         {
             try
             {
+                //Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
                 if (cmd[0].Equals("drawto"))
                 {
                     String[] data = cmd[1].Split(',');
@@ -277,7 +358,7 @@ namespace comp1
                     {
                         if (!int.TryParse(data[0], out x))
                         {
-                            if (MyCanvass.v.GetData(data[0]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[0]))
                             {
                                 var1 = true;
                             }
@@ -293,7 +374,7 @@ namespace comp1
                         }
                         if (!int.TryParse(data[1], out y))
                         {
-                            if (MyCanvass.v.GetData(data[1]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[1]))
                             {
                                 var1 = true;
                             }
@@ -329,7 +410,7 @@ namespace comp1
                     {
                         if (!int.TryParse(data[0], out x))
                         {
-                            if (MyCanvass.v.GetData(data[0]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[0]))
                             {
                                 var1 = true;
                             }
@@ -345,7 +426,7 @@ namespace comp1
                         }
                         if (!int.TryParse(data[1], out y))
                         {
-                            if (MyCanvass.v.GetData(data[1]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[1]))
                             {
                                 var1 = true;
                             }
@@ -379,7 +460,7 @@ namespace comp1
                     {
                         if (!int.TryParse(data[0], out x))
                         {
-                            if (MyCanvass.v.GetData(data[0]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[0]))
                             {
                                 var1 = true;
                             }
@@ -395,7 +476,7 @@ namespace comp1
                         }
                         if (!int.TryParse(data[1], out y))
                         {
-                            if (MyCanvass.v.GetData(data[1]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[1]))
                             {
                                 var1 = true;
                             }
@@ -433,7 +514,7 @@ namespace comp1
                     {
                         if (!int.TryParse(data[0], out x))
                         {
-                            if (MyCanvass.v.GetData(data[0]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[0]))
                             {
                                 var1 = true;
                             }
@@ -449,7 +530,7 @@ namespace comp1
                         }
                         if (!int.TryParse(data[1], out y))
                         {
-                            if (MyCanvass.v.GetData(data[1]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[1]))
                             {
                                 var1 = true;
                             }
@@ -465,7 +546,7 @@ namespace comp1
                         }
                         if (!int.TryParse(data[2], out z))
                         {
-                            if (MyCanvass.v.GetData(data[2]).Equals(null))
+                            if (!MyCanvass.v.DataExists(data[2]))
                             {
                                 var1 = true;
                             }
@@ -499,7 +580,7 @@ namespace comp1
                     {
                         if (!int.TryParse(cmd[1], out x))
                         {
-                            if (MyCanvass.v.GetData(cmd[1]).Equals(null))
+                            if (!MyCanvass.v.DataExists(cmd[1]))
                             {
                                 var1 = true;
                             }
@@ -533,7 +614,7 @@ namespace comp1
                     {
                         if (!int.TryParse(cmd[1], out x))
                         {
-                            if (MyCanvass.v.GetData(cmd[1]).Equals(null))
+                            if (!MyCanvass.v.DataExists(cmd[1]))
                             {
                                 var1 = true;
                             }
@@ -620,7 +701,7 @@ namespace comp1
                             {
                                 if (!int.TryParse(cmd[2], out x))
                                 {
-                                    if (MyCanvass.v.GetData(cmd[2]).Equals(null))
+                                    if (!MyCanvass.v.DataExists(cmd[2]))
                                     {
                                         var1 = true;
                                     }
@@ -633,7 +714,7 @@ namespace comp1
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
-                                    if (MyCanvass.v.GetData(cmd[4]).Equals(null))
+                                    if (!MyCanvass.v.DataExists(cmd[4]))
                                     {
                                         var1 = true;
                                     }
@@ -656,7 +737,6 @@ namespace comp1
                             }
                             varValue = x + y;
                             MyCanvass.v.AppendData(cmd[0], varValue);
-                            /*MessageBox.Show(MyCanvass.v.GetData(cmd[0]).ToString());*/
                         }
                         if (cmd[3].Equals("-"))
                         {
@@ -668,7 +748,7 @@ namespace comp1
                             {
                                 if (!int.TryParse(cmd[2], out x))
                                 {
-                                    if (MyCanvass.v.GetData(cmd[2]).Equals(null))
+                                    if (!MyCanvass.v.DataExists(cmd[2]))
                                     {
                                         var1 = true;
                                     }
@@ -681,7 +761,7 @@ namespace comp1
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
-                                    if (MyCanvass.v.GetData(cmd[4]).Equals(null))
+                                    if (!MyCanvass.v.DataExists(cmd[4]))
                                     {
                                         var1 = true;
                                     }
@@ -704,7 +784,6 @@ namespace comp1
                             }
                             varValue = x - y;
                             MyCanvass.v.AppendData(cmd[0], varValue);
-                            /*MessageBox.Show(MyCanvass.v.GetData(cmd[0]).ToString());*/
                         }
                         if (cmd[3].Equals("/"))
                         {
@@ -716,7 +795,7 @@ namespace comp1
                             {
                                 if (!int.TryParse(cmd[2], out x))
                                 {
-                                    if (MyCanvass.v.GetData(cmd[2]).Equals(null))
+                                    if (!MyCanvass.v.DataExists(cmd[2]))
                                     {
                                         var1 = true;
                                     }
@@ -729,7 +808,7 @@ namespace comp1
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
-                                    if (MyCanvass.v.GetData(cmd[4]).Equals(null))
+                                    if (!MyCanvass.v.DataExists(cmd[4]))
                                     {
                                         var1 = true;
                                     }
@@ -752,7 +831,6 @@ namespace comp1
                             }
                             varValue = x / y;
                             MyCanvass.v.AppendData(cmd[0], varValue);
-                            /*MessageBox.Show(MyCanvass.v.GetData(cmd[0]).ToString());*/
                         }
                         if (cmd[3].Equals("*"))
                         {
@@ -764,7 +842,7 @@ namespace comp1
                             {
                                 if (!int.TryParse(cmd[2], out x))
                                 {
-                                    if (MyCanvass.v.GetData(cmd[2]).Equals(null))
+                                    if (!MyCanvass.v.DataExists(cmd[2]))
                                     {
                                         var1 = true;
                                     }
@@ -777,7 +855,7 @@ namespace comp1
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
-                                    if (MyCanvass.v.GetData(cmd[4]).Equals(null))
+                                    if (!MyCanvass.v.DataExists(cmd[4]))
                                     {
                                         var1 = true;
                                     }
@@ -800,7 +878,6 @@ namespace comp1
                             }
                             varValue = x * y;
                             MyCanvass.v.AppendData(cmd[0], varValue);
-                            /*MessageBox.Show(MyCanvass.v.GetData(cmd[0]).ToString());*/
                         }
                     }
                     catch
@@ -808,10 +885,22 @@ namespace comp1
                         int x = 0;
                         try
                         {
+                            bool var1 = false;
                             if (!int.TryParse(cmd[2], out x))
                             {
-                                MyCanvass.syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
-                                lineNum = lineNum + 20;
+                                if (!MyCanvass.v.DataExists(cmd[2]))
+                                {
+                                    var1 = true;
+                                }
+                                else
+                                {
+                                    x = MyCanvass.v.GetData(cmd[2]);
+                                }
+                                if (var1)
+                                {
+                                    MyCanvass.syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
+                                    lineNum = lineNum + 20;
+                                }
                             }
                         }
                         catch (Exception e)
@@ -821,15 +910,13 @@ namespace comp1
                         }
                         if (!MyCanvass.err)
                         {
-                            if (MyCanvass.v.GetData(cmd[0]).Equals(null))
+                            if (!MyCanvass.v.DataExists(cmd[0]))
                             {
                                 MyCanvass.v.StoreData(cmd[0], x);
-                                /*MessageBox.Show(MyCanvass.v.GetData(cmd[0]).ToString());*/
                             }
                             else
                             {
                                 MyCanvass.v.AppendData(cmd[0], x);
-                                /*MessageBox.Show(MyCanvass.v.GetData(cmd[0]).ToString());*/
                             }
 
                         }
@@ -847,7 +934,7 @@ namespace comp1
                 MyCanvass.syntax.CommandChecking(MyCanvass, n, lineNum);
                 lineNum = lineNum + 20;
             }
-            //Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
+            
             
         }
     }
