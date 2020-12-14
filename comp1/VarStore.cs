@@ -20,6 +20,12 @@ namespace comp1
             return x;
         }
 
+        public bool DataExists(String varName)
+        {
+            int x;
+            return hash.TryGetValue(varName, out x);
+        }
+
         public void AppendData(String varName, int varValue)
         {
             hash[varName] = varValue;
