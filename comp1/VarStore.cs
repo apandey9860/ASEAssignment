@@ -30,5 +30,9 @@ namespace comp1
         {
             hash[varName] = varValue;
         }
+        public void reset()
+        {
+            hash.Clear();
+        }
     }
 }

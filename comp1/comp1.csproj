@@ -94,6 +94,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="DrawSquare.cs" />
+    <Compile Include="MethodStore.cs" />
     <Compile Include="parseCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
