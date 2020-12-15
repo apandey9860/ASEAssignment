@@ -87,7 +87,7 @@ namespace comp1
                 }
                 else if (cmd[0].Equals("if"))
                 {
-                    /*List<String> data = new List<string>();
+                    List<String> data = new List<string>();
                     do
                     {
                         x++;
@@ -95,8 +95,8 @@ namespace comp1
                         n++;
                         cmd = val[n].Split(' ');
                     }
-                    while (!cmd[0].Equals("endwhile"));
-                    LoopWhile(data, MyCanvass, n, x);*/
+                    while (!cmd[0].Equals("endif"));
+                    ConditionIf(data, MyCanvass, n, x);
                 }
                 else if (cmd[0].Equals("loop"))
                 {
@@ -110,6 +110,19 @@ namespace comp1
                     }
                     while (!cmd[0].Equals("endfor"));
                     LoopFor(data, MyCanvass, n, x);
+                }
+                else if (cmd[0].Equals("method"))
+                {
+                    List<String> data = new List<string>();
+                    do
+                    {
+                        x++;
+                        data.Add(val[n]);
+                        n++;
+                        cmd = val[n].Split(' ');
+                    }
+                    while (!cmd[0].Equals("endmethod"));
+                    MethodSelect(data, MyCanvass, n, x);
                 }
                 else
                 {
@@ -175,6 +188,203 @@ namespace comp1
 
         public void ConditionIf(List<String> data, Canvass MyCanvass, int n, int z)
         {
+            string tempData = string.Join("\n", data);
+            String[] val = tempData.Split('\n');
+            String[] cmd = val[0].Split(' ');
+            int x = 0;
+            bool var1 = false;
+            List<String> tempList = new List<string>();
+            int tempInt = 1;
+            while (tempInt < val.Length)
+            {
+                tempList.Add(val[tempInt]);
+                tempInt++;
+            }
+
+            try
+            {
+                if (cmd[1].Split('<').Length > 1)
+                {
+                    String[] tempVal = cmd[1].Split('<');
+                    if (!int.TryParse(tempVal[1], out x))
+                    {
+                        if (!MyCanvass.v.DataExists(tempVal[1]))
+                        {
+                            var1 = true;
+                        }
+                        else
+                        {
+                            x = MyCanvass.v.GetData(tempVal[1]);
+                        }
+                    }
+                    if (var1)
+                    {
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    else
+                    {
+                        if (!MyCanvass.v.DataExists(tempVal[0]))
+                        {
+                            var1 = true;
+                        }
+                        if (var1)
+                        {
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            lineNum = lineNum + 20;
+                        }
+                        else
+                        {
+                            if (MyCanvass.v.GetData(tempVal[0]) < x)
+                            {
+                                tempData = string.Join("\n", tempList);
+                                multiCommand(tempData, MyCanvass);
+                            }
+                        }
+                    }
+                }
+                else if (cmd[1].Split('>').Length > 1)
+                {
+                    String[] tempVal = cmd[1].Split('>');
+                    if (!int.TryParse(tempVal[1], out x))
+                    {
+                        if (!MyCanvass.v.DataExists(tempVal[1]))
+                        {
+                            var1 = true;
+                        }
+                        else
+                        {
+                            x = MyCanvass.v.GetData(tempVal[1]);
+                        }
+                    }
+                    if (var1)
+                    {
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    else
+                    {
+                        if (!MyCanvass.v.DataExists(tempVal[0]))
+                        {
+                            var1 = true;
+                        }
+                        if (var1)
+                        {
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            lineNum = lineNum + 20;
+                        }
+                        else
+                        {
+                            if (MyCanvass.v.GetData(tempVal[0]) > x)
+                            {
+                                tempData = string.Join("\n", tempList);
+                                multiCommand(tempData, MyCanvass);
+                            }
+                        }
+                    }
+                }
+                else if (cmd[1].Split("==".ToCharArray()).Length > 1)
+                {
+                    String[] tempVal = cmd[1].Split("==".ToCharArray());
+                    if (!int.TryParse(tempVal[1], out x))
+                    {
+                        if (!MyCanvass.v.DataExists(tempVal[1]))
+                        {
+                            var1 = true;
+                        }
+                        else
+                        {
+                            x = MyCanvass.v.GetData(tempVal[1]);
+                        }
+                    }
+                    if (var1)
+                    {
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    else
+                    {
+                        if (!MyCanvass.v.DataExists(tempVal[0]))
+                        {
+                            var1 = true;
+                        }
+                        if (var1)
+                        {
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            lineNum = lineNum + 20;
+                        }
+                        else
+                        {
+                            if (MyCanvass.v.GetData(tempVal[0]) == x)
+                            {
+                                tempData = string.Join("\n", tempList);
+                                multiCommand(tempData, MyCanvass);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MyCanvass.syntax.ParmChecking(false, "", n - z, MyCanvass, lineNum);
+                    lineNum = lineNum + 20;
+                }
+            }
+            catch
+            {
+                MyCanvass.syntax.ParmChecking(false, "", n - z, MyCanvass, lineNum);
+                lineNum = lineNum + 20;
+            }
+        }
+
+
+        public void MethodSelect(List<String> data, Canvass MyCanvass, int n, int z)
+        {
+            string tempData = string.Join("\n", data);
+            String[] val = tempData.Split('\n');
+            String[] cmd = val[0].Split(' ');
+            String x = null;
+            bool var1 = false;
+            String[] method = cmd[1].Split('(',')');
+            String[] methodValue = null;
+
+            MyCanvass.m.StoreData(method[0], method[1]);
+            List<String> tempList = new List<string>();
+            int tempInt = 1;
+            while (tempInt < val.Length)
+            {
+                tempList.Add(val[tempInt]);
+                tempInt++;
+            }
+
+            try
+            {
+                if (MyCanvass.m.DataExists(method[0]))
+                {
+                    x = MyCanvass.m.GetData(method[0]);
+                    methodValue = x.Split(',');
+                }
+                else
+                {
+                    var1 = true;
+                }
+                if (var1)
+                {
+                    MyCanvass.syntax.ParmChecking(false, cmd[1], n, MyCanvass, lineNum);
+                    lineNum = lineNum + 20;
+                }
+                else
+                {
+                    tempData = string.Join("\n", tempList);
+                    String methodCmd = method[0] + "command";
+                    MyCanvass.m.StoreData(methodCmd, tempData);
+                }
+
+            }
+            catch
+            {
+                MyCanvass.syntax.ParmChecking(false, "", n - z, MyCanvass, lineNum);
+                lineNum = lineNum + 20;
+            }
 
         }
 
@@ -341,6 +551,7 @@ namespace comp1
         {
             try
             {
+                String[] method = cmd[0].Split('(', ')');
                 //Checks if entered command exists(if not call displays error also stops further execution) also checks for validity of parameters and number of parametes
                 if (cmd[0].Equals("drawto"))
                 {
@@ -681,6 +892,22 @@ namespace comp1
                     if (!MyCanvass.err)
                         Application.Exit();
                 }
+                else if (MyCanvass.m.DataExists(method[0]))
+                {
+                    String[] methodValue = (MyCanvass.m.GetData(method[0])).Split(',');
+                    String methodCmd = method[0] + "command";
+                    String methodCommand = MyCanvass.m.GetData(methodCmd);
+                    String[] userValue = method[1].Split(',');
+                    int x = 0;
+                    while (methodValue.Length > x)
+                    {
+                        String[] valueStore = (methodValue[x] + " = " + userValue[x]).Split(' ');
+                        spl(valueStore, MyCanvass, n);
+                        x++;
+                    }
+                    multiCommand(methodCommand, MyCanvass);
+
+                }
                 else if (cmd[1].Equals("="))
                 {
                     try
@@ -918,7 +1145,6 @@ namespace comp1
                 }
                 else
                 {
-
                     MyCanvass.syntax.CommandChecking(MyCanvass, n, lineNum);
                     lineNum = lineNum + 20;
                 }

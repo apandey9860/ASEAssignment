@@ -16,6 +16,7 @@ namespace comp1
         //Instance data for x,y pos, pen and graphic context
         public Graphics g;
         public VarStore v;
+        public MethodStore m;
         public SyntaxChecking syntax;
         public Pen pen;
         public SolidBrush brush;
@@ -31,6 +32,7 @@ namespace comp1
         {
             this.g = g;
             v = new VarStore();
+            m = new MethodStore();
             syntax = new SyntaxChecking();
             xPos = yPos = 0;
             pen = new Pen(Color.Black, 1);//default pen with constants
@@ -82,6 +84,8 @@ namespace comp1
             pen = new Pen(Color.Black, 1);//default pen with constants
             err = false;
             fill = false;
+            v.reset();
+            m.reset();
             g.Clear(SystemColors.Control);
             g.DrawRectangle(pen, xPos, yPos, 1, 1);
         }
