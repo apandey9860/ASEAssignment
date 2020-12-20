@@ -283,23 +283,23 @@ namespace comp1
                         }
                     }
                 }
-                else if (cmd[1].Split("==".ToCharArray()).Length > 1)
+                else if (cmd[1].Split('=').Length > 1)
                 {
-                    String[] tempVal = cmd[1].Split("==".ToCharArray());
-                    if (!int.TryParse(tempVal[1], out x))
+                    String[] tempVal = cmd[1].Split('=');
+                    if (!int.TryParse(tempVal[2], out x))
                     {
-                        if (!MyCanvass.v.DataExists(tempVal[1]))
+                        if (!MyCanvass.v.DataExists(tempVal[2]))
                         {
                             var1 = true;
                         }
                         else
                         {
-                            x = MyCanvass.v.GetData(tempVal[1]);
+                            x = MyCanvass.v.GetData(tempVal[2]);
                         }
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[2], n, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
@@ -486,23 +486,23 @@ namespace comp1
                         }
                     }
                 }
-                else if (cmd[1].Split("==".ToCharArray()).Length > 1)
+                else if (cmd[1].Split('=').Length > 1)
                 {
-                    String[] tempVal = cmd[1].Split("==".ToCharArray());
-                    if (!int.TryParse(tempVal[1], out x))
+                    String[] tempVal = cmd[1].Split('=');
+                    if (!int.TryParse(tempVal[2], out x))
                     {
-                        if (!MyCanvass.v.DataExists(tempVal[1]))
+                        if (!MyCanvass.v.DataExists(tempVal[2]))
                         {
                             var1 = true;
                         }
                         else
                         {
-                            x = MyCanvass.v.GetData(tempVal[1]);
+                            x = MyCanvass.v.GetData(tempVal[2]);
                         }
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[2], n, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
