@@ -13,15 +13,24 @@ namespace comp1
     /// </summary>
     public class Canvass
     {
-        //Instance data for x,y pos, pen and graphic context
+
+        ///Initialization of graphics
         public Graphics g;
+        ///Initialization of class VarStore
         public VarStore v;
+        ///Initialization of class MethodStore
         public MethodStore m;
+        ///Initialization of class SyntaxChecking
         public SyntaxChecking syntax;
+        ///Initialization of Pen
         public Pen pen;
+        ///Initialization of SolidBrush
         public SolidBrush brush;
+        ///Initialization of xPos and yPos
         public int xPos, yPos;
+        ///Initialization of bool fill
         public bool fill = false;
+        ///Initialization of bool err
         public bool err = false;
 
         /// <summary>
