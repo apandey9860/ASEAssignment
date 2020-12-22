@@ -404,8 +404,6 @@ namespace comp1
                                     {
                                         x = MyCanvass.v.GetData(cmd[2]);
                                     }
-                                    /*syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
-                                    lineNum = lineNum + 20;*/
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
@@ -451,8 +449,6 @@ namespace comp1
                                     {
                                         x = MyCanvass.v.GetData(cmd[2]);
                                     }
-                                    /*syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
-                                    lineNum = lineNum + 20;*/
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
@@ -498,8 +494,6 @@ namespace comp1
                                     {
                                         x = MyCanvass.v.GetData(cmd[2]);
                                     }
-                                    /*syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
-                                    lineNum = lineNum + 20;*/
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
@@ -545,8 +539,6 @@ namespace comp1
                                     {
                                         x = MyCanvass.v.GetData(cmd[2]);
                                     }
-                                    /*syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
-                                    lineNum = lineNum + 20;*/
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
