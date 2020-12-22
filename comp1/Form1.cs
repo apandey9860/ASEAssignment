@@ -17,9 +17,11 @@ namespace comp1
     {
         const int bitmapVal1 = 640;
         const int bitmapVal2 = 480;
+        ///Creating Bitmap in program
         public Bitmap OutputBitmap = new Bitmap(bitmapVal1, bitmapVal2);
 
         Canvass MyCanvass;
+        ///Initialization of graphics
         public Graphics g;
 
         /// <summary>
