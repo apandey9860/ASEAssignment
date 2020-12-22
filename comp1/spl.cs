@@ -230,7 +230,7 @@ namespace comp1
                             }
                             else
                             {
-                                y = MyCanvass.v.GetData(data[2]);
+                                z = MyCanvass.v.GetData(data[2]);
                             }
                             if (var1)
                             {
@@ -314,8 +314,53 @@ namespace comp1
                     }
                     if (!MyCanvass.err)
                     {
-                        Shape sqr = new DrawCircle(x);
-                        sqr.draw(MyCanvass);
+                        Shape circle = new DrawCircle(x);
+                        circle.draw(MyCanvass);
+                    }
+                }
+                else if (cmd[0].Equals("polygon"))
+                {
+                    String[] data = cmd[1].Split(',');
+                    List<int> tempPoints = new List<int>();
+                    int i = 0;
+                    int x = 0;
+                    /*int y = 0;
+                    int z = 0;*/
+                    bool var1 = false;
+                    try
+                    {
+                        while (data.Length>i)
+                        {
+                            if (!int.TryParse(data[i], out x))
+                            {
+                                if (!MyCanvass.v.DataExists(data[i]))
+                                {
+                                    var1 = true;
+                                }
+                                else
+                                {
+                                    tempPoints.Add(MyCanvass.v.GetData(data[i]));
+                                }
+                                if (var1)
+                                {
+                                    MyCanvass.syntax.ParmChecking(false, data[i], n, MyCanvass, lineNum);
+                                    lineNum = lineNum + 20;
+                                }
+                            }
+                            tempPoints.Add(x);
+                            i++;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MyCanvass.syntax.ParmChecking(e, MyCanvass, n, lineNum);
+                        lineNum = lineNum + 20;
+                    }
+                    if (!MyCanvass.err)
+                    {
+                        int[] arr = tempPoints.ToArray(); 
+                        Shape poly = new DrawPolygon(arr);
+                        poly.draw(MyCanvass);
                     }
                 }
                 else if (cmd[0].Equals("pen"))
