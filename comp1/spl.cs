@@ -11,15 +11,16 @@ namespace comp1
     /// <summary>
     /// Simple Programming Language- spl
     /// </summary>
-    class spl
+    public class spl
     {
+
         /// <summary>
         /// Simple Programming Language(spl) which check the user inputted commands for errors and exception and runs if no error is found
         /// </summary>
-        /// <param name="cmd"></param>
-        /// <param name="MyCanvass"></param>
-        /// <param name="n"></param>
-        /// <param name="lineNum"></param>
+        /// <param name="cmd">String command provided by user</param>
+        /// <param name="MyCanvass">Canvass in which the user given instruction is implemented</param>
+        /// <param name="n">line where the compiler has reached</param>
+        /// <param name="lineNum">linenum where the error is displayed</param>
         public spl(String[] cmd, Canvass MyCanvass, int n, int lineNum)
         {
             try
@@ -324,8 +325,6 @@ namespace comp1
                     List<int> tempPoints = new List<int>();
                     int i = 0;
                     int x = 0;
-                    /*int y = 0;
-                    int z = 0;*/
                     bool var1 = false;
                     try
                     {

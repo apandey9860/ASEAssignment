@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace comp1
 {
+    /// <summary>
+    /// Class which inherits shape and draws a polygon
+    /// </summary>
     class DrawPolygon : Shape
     {
         PointF[] points;

@@ -14,23 +14,43 @@ namespace comp1
     public class Canvass
     {
 
-        ///Initialization of graphics
+
+        /// <summary>
+        /// Initialization of graphics
+        /// </summary>
         public Graphics g;
-        ///Initialization of class VarStore
+        /// <summary>
+        /// Initialization of class VarStore
+        /// </summary>
         public VarStore v;
-        ///Initialization of class MethodStore
+        /// <summary>
+        /// Initialization of class MethodStore
+        /// </summary>
         public MethodStore m;
-        ///Initialization of class SyntaxChecking
+
+        /// <summary>
+        /// Initialization of class SyntaxChecking
+        /// </summary>
         public SyntaxChecking syntax;
-        ///Initialization of Pen
+        /// <summary>
+        /// Initialization of Pen
+        /// </summary>
         public Pen pen;
-        ///Initialization of SolidBrush
+        /// <summary>
+        /// Initialization of SolidBrush
+        /// </summary>
         public SolidBrush brush;
-        ///Initialization of xPos and yPos
+        /// <summary>
+        /// Initialization of xPos and yPos
+        /// </summary>
         public int xPos, yPos;
-        ///Initialization of bool fill
+        /// <summary>
+        /// Initialization of bool fill
+        /// </summary>
         public bool fill = false;
-        ///Initialization of bool err
+        /// <summary>
+        /// Initialization of bool err
+        /// </summary>
         public bool err = false;
 
         /// <summary>

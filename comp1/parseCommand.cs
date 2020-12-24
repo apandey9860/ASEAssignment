@@ -26,7 +26,7 @@ namespace comp1
             //to reset err value and canvass after execution in case of an error
             if (MyCanvass.err)
             {
-                MyCanvass.reset();
+                /*MyCanvass.reset();*/
                 MyCanvass.err = false;//sets err to false
             }
             //if there no input in rich text box(program window)
@@ -130,10 +130,11 @@ namespace comp1
                     else
                     {
                         spl spl = new spl(cmd, MyCanvass, n, lineNum);
+                        n++;
                         /*spl(cmd, MyCanvass, n);*/
                     }
 
-                    n++;
+                    
                 }
             }
             catch
