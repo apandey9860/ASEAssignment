@@ -172,7 +172,7 @@ namespace comp1
                 }
                 if (var1)
                 {
-                    MyCanvass.syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
+                    MyCanvass.syntax.ParmChecking(false, cmd[2], n-z, MyCanvass, lineNum);
                     lineNum = lineNum + 20;
                 }
                 else
@@ -233,7 +233,7 @@ namespace comp1
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n-z, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
@@ -244,7 +244,7 @@ namespace comp1
                         }
                         if (var1)
                         {
-                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n-z, MyCanvass, lineNum);
                             lineNum = lineNum + 20;
                         }
                         else
@@ -273,7 +273,7 @@ namespace comp1
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n-z, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
@@ -284,7 +284,7 @@ namespace comp1
                         }
                         if (var1)
                         {
-                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n-z, MyCanvass, lineNum);
                             lineNum = lineNum + 20;
                         }
                         else
@@ -313,7 +313,7 @@ namespace comp1
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[2], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[2], n-z, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
@@ -324,7 +324,7 @@ namespace comp1
                         }
                         if (var1)
                         {
-                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n-z, MyCanvass, lineNum);
                             lineNum = lineNum + 20;
                         }
                         else
@@ -389,7 +389,7 @@ namespace comp1
                 }
                 if (var1)
                 {
-                    MyCanvass.syntax.ParmChecking(false, cmd[1], n, MyCanvass, lineNum);
+                    MyCanvass.syntax.ParmChecking(false, cmd[1], n-z, MyCanvass, lineNum);
                     lineNum = lineNum + 20;
                 }
                 else
@@ -448,7 +448,7 @@ namespace comp1
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n-z, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
@@ -459,7 +459,7 @@ namespace comp1
                         }
                         if (var1)
                         {
-                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n-z, MyCanvass, lineNum);
                             lineNum = lineNum + 20;
                         }
                         else
@@ -488,7 +488,7 @@ namespace comp1
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[1], n-z, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
@@ -499,7 +499,7 @@ namespace comp1
                         }
                         if (var1)
                         {
-                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n-z, MyCanvass, lineNum);
                             lineNum = lineNum + 20;
                         }
                         else
@@ -528,7 +528,7 @@ namespace comp1
                     }
                     if (var1)
                     {
-                        MyCanvass.syntax.ParmChecking(false, tempVal[2], n, MyCanvass, lineNum);
+                        MyCanvass.syntax.ParmChecking(false, tempVal[2], n-z, MyCanvass, lineNum);
                         lineNum = lineNum + 20;
                     }
                     else
@@ -539,7 +539,7 @@ namespace comp1
                         }
                         if (var1)
                         {
-                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n, MyCanvass, lineNum);
+                            MyCanvass.syntax.ParmChecking(false, tempVal[0], n-z, MyCanvass, lineNum);
                             lineNum = lineNum + 20;
                         }
                         else
