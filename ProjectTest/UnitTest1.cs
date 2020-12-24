@@ -113,6 +113,17 @@ namespace UnitTesting
         }
 
         [TestMethod]
+        public void PolygonTest()
+        {
+            comp1.Form1 form = new comp1.Form1();
+            comp1.parseCommand parse = new comp1.parseCommand();
+            Bitmap outBitmap = form.OutputBitmap;
+
+            comp1.Canvass MyCanvass = new comp1.Canvass(Graphics.FromImage(outBitmap));
+            parse.Command("polygon 20,40,50,90,80", "", MyCanvass);
+        }
+
+        [TestMethod]
         public void ColorTest()
         {
             comp1.Form1 form = new comp1.Form1();
