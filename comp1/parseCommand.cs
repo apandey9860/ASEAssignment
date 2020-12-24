@@ -13,7 +13,7 @@ namespace comp1
     /// </summary>
     public class parseCommand
     {
-        int lineNum=0;
+        int lineNum = 0;
 
         /// <summary>
         /// Runs further according to given command in cmdLine or ProgramWindow
@@ -26,7 +26,7 @@ namespace comp1
             //to reset err value and canvass after execution in case of an error
             if (MyCanvass.err)
             {
-                /*MyCanvass.reset();*/
+                MyCanvass.reset();
                 MyCanvass.err = false;//sets err to false
             }
             //if there no input in rich text box(program window)
@@ -54,8 +54,7 @@ namespace comp1
         public void singleCommand(String command, Canvass MyCanvass)
         {
             String[] cmd = command.Split(' ');
-            spl(cmd, MyCanvass, -1, lineNum);
-            /*spl(cmd, MyCanvass, -1);*/
+            spl(cmd, MyCanvass, -1);
 
         }
 
@@ -69,77 +68,68 @@ namespace comp1
             String[] val = command.Split('\n');
             int n = 0;
             int x = 0;
-            try
+            //loop for input in rich text box/program window
+            while (n < val.Length)
             {
-                //loop for input in rich text box/program window
-                while (n < val.Length)
+                String[] cmd = val[n].Split(' ');
+                if (cmd[0].Equals("while"))
                 {
-                    String[] cmd = val[n].Split(' ');
-                    if (cmd[0].Equals("while"))
+                    List<String> data = new List<string>();
+                    do
                     {
-                        List<String> data = new List<string>();
-                        do
-                        {
-                            x++;
-                            data.Add(val[n]);
-                            n++;
-                            cmd = val[n].Split(' ');
-                        }
-                        while (!cmd[0].Equals("endwhile"));
-                        LoopWhile(data, MyCanvass, n, x);
-                    }
-                    else if (cmd[0].Equals("if"))
-                    {
-                        List<String> data = new List<string>();
-                        do
-                        {
-                            x++;
-                            data.Add(val[n]);
-                            n++;
-                            cmd = val[n].Split(' ');
-                        }
-                        while (!cmd[0].Equals("endif"));
-                        ConditionIf(data, MyCanvass, n, x);
-                    }
-                    else if (cmd[0].Equals("loop"))
-                    {
-                        List<String> data = new List<string>();
-                        do
-                        {
-                            x++;
-                            data.Add(val[n]);
-                            n++;
-                            cmd = val[n].Split(' ');
-                        }
-                        while (!cmd[0].Equals("endfor"));
-                        LoopFor(data, MyCanvass, n, x);
-                    }
-                    else if (cmd[0].Equals("method"))
-                    {
-                        List<String> data = new List<string>();
-                        do
-                        {
-                            x++;
-                            data.Add(val[n]);
-                            n++;
-                            cmd = val[n].Split(' ');
-                        }
-                        while (!cmd[0].Equals("endmethod"));
-                        MethodSelect(data, MyCanvass, n, x);
-                    }
-                    else
-                    {
-                        spl(cmd, MyCanvass, n, lineNum);
+                        x++;
+                        data.Add(val[n]);
                         n++;
-                        /*spl(cmd, MyCanvass, n);*/
+                        cmd = val[n].Split(' ');
                     }
-
-                    
+                    while (!cmd[0].Equals("endwhile"));
+                    LoopWhile(data, MyCanvass, n, x);
                 }
-            }
-            catch
-            {
-                MyCanvass.syntax.CommandChecking(MyCanvass, n, lineNum);
+                else if (cmd[0].Equals("if"))
+                {
+                    List<String> data = new List<string>();
+                    do
+                    {
+                        x++;
+                        data.Add(val[n]);
+                        n++;
+                        cmd = val[n].Split(' ');
+                    }
+                    while (!cmd[0].Equals("endif"));
+                    ConditionIf(data, MyCanvass, n, x);
+                }
+                else if (cmd[0].Equals("loop"))
+                {
+                    List<String> data = new List<string>();
+                    do
+                    {
+                        x++;
+                        data.Add(val[n]);
+                        n++;
+                        cmd = val[n].Split(' ');
+                    }
+                    while (!cmd[0].Equals("endfor"));
+                    LoopFor(data, MyCanvass, n, x);
+                }
+                else if (cmd[0].Equals("method"))
+                {
+                    List<String> data = new List<string>();
+                    do
+                    {
+                        x++;
+                        data.Add(val[n]);
+                        n++;
+                        cmd = val[n].Split(' ');
+                    }
+                    while (!cmd[0].Equals("endmethod"));
+                    MethodSelect(data, MyCanvass, n, x);
+                }
+                else
+                {
+                    spl(cmd, MyCanvass, n);
+                }
+
+                n++;
             }
         }
 
@@ -374,7 +364,7 @@ namespace comp1
             String[] cmd = val[0].Split(' ');
             String x = null;
             bool var1 = false;
-            String[] method = cmd[1].Split('(',')');
+            String[] method = cmd[1].Split('(', ')');
             String[] methodValue = null;
 
             MyCanvass.m.StoreData(method[0], method[1]);
@@ -564,18 +554,18 @@ namespace comp1
                 }
                 else
                 {
-                    MyCanvass.syntax.ParmChecking(false, "", n-z, MyCanvass, lineNum);
+                    MyCanvass.syntax.ParmChecking(false, "", n - z, MyCanvass, lineNum);
                     lineNum = lineNum + 20;
                 }
             }
             catch
             {
-                MyCanvass.syntax.ParmChecking(false, "", n-z, MyCanvass, lineNum);
+                MyCanvass.syntax.ParmChecking(false, "", n - z, MyCanvass, lineNum);
                 lineNum = lineNum + 20;
             }
+
+
         }
-
-
 
         /// <summary>
         /// Simple Programming Language(spl) which check the user inputted commands for errors and exception and runs if no error is found
@@ -583,8 +573,7 @@ namespace comp1
         /// <param name="cmd">String command provided by user</param>
         /// <param name="MyCanvass">Canvass in which the user given instruction is implemented</param>
         /// <param name="n">line where the compiler has reached</param>
-        /// <param name="lineNum">linenum where the error is displayed</param>
-        public void spl(String[] cmd, Canvass MyCanvass, int n, int lineNum)
+        public void spl(String[] cmd, Canvass MyCanvass, int n)
         {
             try
             {
@@ -982,11 +971,10 @@ namespace comp1
                     while (methodValue.Length > x)
                     {
                         String[] valueStore = (methodValue[x] + " = " + userValue[x]).Split(' ');
-                        spl(valueStore, MyCanvass, n, lineNum);
+                        spl(valueStore, MyCanvass, n);
                         x++;
                     }
-                    parseCommand mul = new parseCommand();
-                    mul.multiCommand(methodCommand, MyCanvass);
+                    multiCommand(methodCommand, MyCanvass);
 
                 }
                 else if (cmd[1].Equals("="))
@@ -1011,6 +999,8 @@ namespace comp1
                                     {
                                         x = MyCanvass.v.GetData(cmd[2]);
                                     }
+                                    /*syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
+                                    lineNum = lineNum + 20;*/
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
@@ -1056,6 +1046,8 @@ namespace comp1
                                     {
                                         x = MyCanvass.v.GetData(cmd[2]);
                                     }
+                                    /*syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
+                                    lineNum = lineNum + 20;*/
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
@@ -1101,6 +1093,8 @@ namespace comp1
                                     {
                                         x = MyCanvass.v.GetData(cmd[2]);
                                     }
+                                    /*syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
+                                    lineNum = lineNum + 20;*/
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
@@ -1146,6 +1140,8 @@ namespace comp1
                                     {
                                         x = MyCanvass.v.GetData(cmd[2]);
                                     }
+                                    /*syntax.ParmChecking(false, cmd[2], n, MyCanvass, lineNum);
+                                    lineNum = lineNum + 20;*/
                                 }
                                 if (!int.TryParse(cmd[4], out y))
                                 {
@@ -1227,8 +1223,8 @@ namespace comp1
                 MyCanvass.syntax.CommandChecking(MyCanvass, n, lineNum);
                 lineNum = lineNum + 20;
             }
+
+
         }
     }
-
-
 }
