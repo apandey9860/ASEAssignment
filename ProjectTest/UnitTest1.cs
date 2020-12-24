@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace UnitTesting
@@ -16,6 +17,32 @@ namespace UnitTesting
 
             comp1.Canvass MyCanvass = new comp1.Canvass(Graphics.FromImage(outBitmap));
             parse.Command("run", "drawto 10,10", MyCanvass);
+        }
+
+        [TestMethod]
+        public void VarStoreTest()
+        {
+            comp1.Form1 form = new comp1.Form1();
+            comp1.parseCommand parse = new comp1.parseCommand();
+            Bitmap outBitmap = form.OutputBitmap;
+            List<String> data = new List<string>();
+
+
+            comp1.Canvass MyCanvass = new comp1.Canvass(Graphics.FromImage(outBitmap));
+            parse.Command("value = 10", "", MyCanvass);
+        }
+
+        [TestMethod]
+        public void VarAppendTest()
+        {
+            comp1.Form1 form = new comp1.Form1();
+            comp1.parseCommand parse = new comp1.parseCommand();
+            Bitmap outBitmap = form.OutputBitmap;
+            comp1.Canvass MyCanvass = new comp1.Canvass(Graphics.FromImage(outBitmap));
+            parse.Command("value = value + 10", "", MyCanvass);
+            parse.Command("value = value - 10", "", MyCanvass);
+            parse.Command("value = value / 10", "", MyCanvass);
+            parse.Command("value = value * 10", "", MyCanvass);
         }
 
         [TestMethod]

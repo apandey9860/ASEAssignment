@@ -16,8 +16,8 @@ namespace comp1
         /// <summary>
         /// Stores user provided data and variable name
         /// </summary>
-        /// <param name="varName"></param>
-        /// <param name="varValue"></param>
+        /// <param name="varName">Name of user defined variable</param>
+        /// <param name="varValue">Value of user defined variable</param>
         public void StoreData(String varName, int varValue)
         {
             hash.Add(varName, varValue);
@@ -26,7 +26,7 @@ namespace comp1
         /// <summary>
         /// Gets user provided data and variable name
         /// </summary>
-        /// <param name="varName"></param>
+        /// <param name="varName">Name of user defined variable</param>
         /// <returns></returns>
         public int GetData(String varName)
         {
@@ -38,7 +38,7 @@ namespace comp1
         /// <summary>
         /// Checks user provided data and variable name
         /// </summary>
-        /// <param name="varName"></param>
+        /// <param name="varName">Name of user defined variable</param>
         /// <returns></returns>
         public bool DataExists(String varName)
         {
@@ -49,8 +49,8 @@ namespace comp1
         /// <summary>
         /// Appends user provided data and variable name
         /// </summary>
-        /// <param name="varName"></param>
-        /// <param name="varValue"></param>
+        /// <param name="varName">Name of user defined variable</param>
+        /// <param name="varValue">Value of user defined variable</param>
         public void AppendData(String varName, int varValue)
         {
             hash[varName] = varValue;
