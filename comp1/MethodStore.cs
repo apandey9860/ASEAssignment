@@ -16,8 +16,8 @@ namespace comp1
         /// <summary>
         /// Stores user provided instructions and parameters
         /// </summary>
-        /// <param name="methodName"></param>
-        /// <param name="methodValue"></param>
+        /// <param name="methodName">Name of user defined method</param>
+        /// <param name="methodValue">user defined parameters</param>
         public void StoreData(String methodName, String methodValue)
         {
             hash.Add(methodName, methodValue);
@@ -26,7 +26,7 @@ namespace comp1
         /// <summary>
         /// Gets user provided instructions and parameters
         /// </summary>
-        /// <param name="methodName"></param>
+        /// <param name="methodName">Name of user defined method</param>
         /// <returns></returns>
         public String GetData(String methodName)
         {
@@ -38,7 +38,7 @@ namespace comp1
         /// <summary>
         /// Checks user provided instructions and parameters
         /// </summary>
-        /// <param name="methodName"></param>
+        /// <param name="methodName">Name of user defined method</param>
         /// <returns></returns>
         public bool DataExists(String methodName)
         {
